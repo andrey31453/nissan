@@ -1,7 +1,7 @@
 <script setup>
-import { main } from '@views'
+import { index } from '@views'
 </script>
 
 <template>
-  <main />
+  <index />
 </template>
