@@ -1,16 +1,17 @@
 import { ref } from 'vue'
+import { type_is } from '@helpers'
 
 //
 // helpers
 //
 
 // fetch_data
-const fetch_data = async (api) => {
+const fetch_data = async (api, error) => {
   return await fetch(api.url, {
     method: api.method,
   })
     .then((r) => r)
-    .catch((e) => e)
+    .catch((e) => (error.value = e))
 }
 
 // working_data
@@ -25,32 +26,89 @@ const working_data = async (data, api) => {
 }
 
 // select_data
-const not_select_data = (data) => {}
+const not_selections_data = (data) => {
+  return [ref(data)]
+}
 
-const select_data = (data, selection) => {
-  if (!selection) return not_select_data(data)
+const get_data_for_keys_list = (data, keys_list) => {
+  if (keys_list.length === 1) return data[keys_list]
 
-  return [[1, 2], 'eeee']
+  return keys_list.reduce((acc, key) => {
+    acc = acc[key]
+    return acc
+  }, data)
+}
+
+const get_keys_list = (key) => {
+  const splitter = ' '
+
+  return key
+    .replace(/[\[\]\.]/g, splitter)
+    .trim()
+    .replace(new RegExp(splitter + splitter, 'g'), splitter)
+    .split(splitter)
+}
+
+const get_data_for_key = (data, key) => {
+  const keys_list = get_keys_list(key)
+
+  return get_data_for_keys_list(data, keys_list)
+}
+
+const get_simple_selection_data = (data, selection) => {
+  return ref(get_data_for_key(data, selection))
+}
+
+const get_filtered_data = (data, filter) => {
+  if (!filter) return data
+
+  return data.filter((v) => filter(v))
+}
+
+const get_ref_from_data = (data, not_ref) => {
+  return not_ref ? data : ref(data)
+}
+
+const get_complex_selection_data = (data, selection) => {
+  const target_data = get_data_for_key(data, selection.key)
+  const filtered_data = get_filtered_data(target_data, selection.filter)
+
+  return get_ref_from_data(filtered_data, selection.not_ref)
+}
+
+const get_selection_data = (data, selection) => {
+  if (type_is(selection, 'string')) {
+    return get_simple_selection_data(data, selection)
+  }
+
+  return get_complex_selection_data(data, selection)
+}
+
+const is_selections_data = (data, selections) => {
+  return Object.keys(selections).reduce((acc, selection_key) => {
+    const selection = selections[selection_key]
+    const selection_data = get_selection_data(data, selection)
+    acc.push(selection_data)
+
+    return acc
+  }, [])
+}
+
+const select_data = (data, selections) => {
+  if (!selections.length) return not_selections_data(data)
+
+  return is_selections_data(data, selections)
 }
 
 //
 // general
 //
 
-export default async (api, selection = null) => {
-  console.log('selection: ', selection)
+export default async (api, ...selections) => {
   const error = ref(null)
 
-  let bd_data = null
-  try {
-    bd_data = await fetch_data(api)
-    console.log('bd_data: ', bd_data)
-  } catch (e) {
-    error.value = e
-  }
+  const bd_data = await fetch_data(api, error)
+  const working_bd_data = await working_data(bd_data, api)
 
-  const data = ref(null)
-  const working_bd_data = working_data(bd_data, api)
-
-  return [error, ...select_data(working_bd_data, selection)]
+  return [error, ...select_data(working_bd_data, selections)]
 }

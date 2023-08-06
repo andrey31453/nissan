@@ -10,21 +10,17 @@ import feature from '../feature/feature'
 // features api
 //
 
-console.log(
-  'use_fetch(api.features',
-  await use_fetch(api.features, { key: 'd' })
-)
-
 const car_store = use_car_store()
-const [error, features, title] = await use_fetch(api.features, { key: 'd' })
-console.log('features: ', features)
-console.log('title: ', title)
-console.log('error: ', error.value)
 
-// const error = null
-// const features = []
-// const title = ''
-console.log('features: ', features)
+const [error, features, title, assets_domain] = await use_fetch(
+  api.features,
+  {
+    key: 'features',
+    filter: (v) => v.model_name === car_store.current_model,
+  },
+  'block_heading',
+  'assets_domain'
+)
 </script>
 
 <template>
