@@ -1,7 +1,8 @@
-const html_webpack_plugin = require('html-webpack-plugin')
-const { VueLoaderPlugin: vue_loader_plugin } = require('vue-loader')
+const html_webpack = require('html-webpack-plugin')
+const { VueLoaderPlugin: vue_loader } = require('vue-loader')
+const copy_webpack = require('copy-webpack-plugin')
 
-const dist_dir = __dirname + '/public/js'
+const public = __dirname + '/public/'
 const src = __dirname + '/src/'
 
 //
@@ -83,9 +84,17 @@ const get_rules = (dev) => {
 
 const get_plugins = () => {
   return [
-    new vue_loader_plugin(),
-    new html_webpack_plugin({
+    new vue_loader(),
+    new html_webpack({
       template: src + 'index.html',
+    }),
+    new copy_webpack({
+      patterns: [
+        {
+          from: src + 'public',
+          to: public + 'assets',
+        },
+      ],
     }),
   ]
 }
@@ -96,6 +105,9 @@ const get_plugins = () => {
 
 const get_alias = () => {
   return {
+    '@': src,
+    '@public': public,
+
     '@consts': src + 'assets/consts/__bunddle.js',
     '@helpers': src + 'assets/helpers/__bunddle.js',
     '@styles': src + 'assets/styles',
@@ -104,6 +116,8 @@ const get_alias = () => {
     '@components': src + 'components/__bunddle.js',
     '@views': src + 'views/__bunddle.js',
     '@composables': src + 'composables/__bunddle.js',
+    '@directives': src + 'directives/__bunddle.js',
+
     '@store': src + 'store/__bunddle.js',
   }
 }
@@ -152,7 +166,7 @@ module.exports = ({ dev }) => {
     output: {
       filename: '[name].js',
       clean: true,
-      path: dist_dir,
+      path: public,
       assetModuleFilename: '[name][ext]',
     },
 

@@ -1,0 +1,66 @@
+// consts
+
+$breakpoints: (
+  'true': 0,
+  'sm': 576,
+  'md': 768,
+  'lg': 992,
+  'xl': 1200,
+  'xxl': 1400,
+  'fluid': 99999,
+);
+
+// colors
+
+$fc: var(--font_color);
+$bc: var(--background_color);
+$dc: var(--default_color);
+$ac: var(--alter_color);
+
+// pararms
+
+$z: var(--z_index);
+$time: var(--animation_time);
+
+// sizes
+
+$d: var(--distance);
+$brad: var(--border_radius);
+$scroll_width: var(--scroll_width);
+
+// fonts
+
+// regular
+$ff: var(--font_family);
+$fs: var(--font_size);
+$fw: var(--font_weight);
+$lh: var(--line_height);
+$tt: var(--transform);
+
+// mark
+$ff_mark: var(--font_family_mark);
+$fs_mark: var(--font_size_mark);
+$fw_mark: var(--font_weight_mark);
+$lh_mark: var(--line_height_mark);
+$tt_mark: var(--transform_mark);
+
+// h1
+$ff_h1: var(--font_family_h1);
+$fs_h1: var(--font_size_h1);
+$fw_h1: var(--font_weight_h1);
+$lh_h1: var(--line_height_h1);
+$tt_h1: var(--transform_h1);
+
+// h2
+$ff_h2: var(--font_family_h2);
+$fs_h2: var(--font_size_h2);
+$fw_h2: var(--font_weight_h2);
+$lh_h2: var(--line_height_h2);
+$tt_h2: var(--transform_h2);
+
+// h3
+$ff_h3: var(--font_family_h3);
+$fs_h3: var(--font_size_h3);
+$fw_h3: var(--font_weight_h3);
+$lh_h3: var(--line_height_h3);
+$tt_h3: var(--transform_h3);

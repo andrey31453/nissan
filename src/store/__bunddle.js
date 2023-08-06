@@ -1,13 +1,6 @@
-// libs
 import { defineStore } from 'pinia'
+import car_store from './config/car'
 
-// stores
-import config_store from './config/config'
-import view_state_store from './view_state/view_state'
+const use_car_store = defineStore('config', car_store)
 
-// define stores
-const use_config_store = defineStore('config', config_store)
-const use_view_state_store = defineStore('view_state', view_state_store)
-
-// export
-export { use_config_store, use_view_state_store }
+export { use_car_store }
