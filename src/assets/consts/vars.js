@@ -17,6 +17,12 @@ export default {
   border_radius: '0',
   scroll_width: '4px',
 
+  // buttons
+  button_width: '280px',
+  button_height: '50px',
+  button_padding: '20px',
+  button_border_width: '2px',
+
   // fonts
 
   font_family: 'nissan_light',

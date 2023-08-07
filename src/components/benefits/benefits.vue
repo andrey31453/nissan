@@ -2,8 +2,9 @@
 import { ui_wrapper, ui_h, ui_slider } from '@ui'
 import benefit from '../benefit/benefit'
 
-import { benefits } from './assets'
+import { benefits, locale_folder } from './assets'
 import { validates } from '@helpers'
+import { use_local_image } from '@composables'
 
 const props = defineProps({
   model: {
@@ -13,6 +14,7 @@ const props = defineProps({
 })
 
 validates.model(props.model)
+use_local_image(benefits, locale_folder)
 </script>
 
 <template>

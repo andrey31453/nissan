@@ -8,8 +8,14 @@ const props = defineProps({
 </script>
 
 <template>
-  <button class="ui_button">
-    <slot />
+  <button :class="['ui_button', `--${variant}`]">
+    <span>
+      <slot />
+    </span>
+
+    <template v-if="variant === 'fill'">
+      <span> icon </span>
+    </template>
   </button>
 </template>
 
@@ -17,6 +23,6 @@ const props = defineProps({
 @use '@styles/classes';
 
 .ui_button {
-  @include classes.button(v-bind(variant));
+  @include classes.button();
 }
 </style>

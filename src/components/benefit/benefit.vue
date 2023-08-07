@@ -1,12 +1,12 @@
 <script setup>
-import { ui_wrapper, ui_h } from '@ui'
+import { ui_wrapper, ui_h, ui_image } from '@ui'
 import { vMark } from '@directives'
 
 const props = defineProps({
   benefit: {
     type: Object,
     required: true,
-    validate: (b) => b.icon && b.title && b.text,
+    validate: (b) => b.image && b.title && b.text,
   },
 })
 </script>
@@ -16,9 +16,7 @@ const props = defineProps({
     gap="3"
     center
   >
-    <span>
-      {{ benefit.icon }}
-    </span>
+    <ui_image :image="benefit" />
 
     <ui_h>
       {{ benefit.title }}

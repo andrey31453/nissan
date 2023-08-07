@@ -1,24 +1,26 @@
+const locale_images_folder = 'assets/benefits'
+
 export default [
   {
-    icon: 'benefit',
+    image: 'benefit.svg',
     title: 'выгода',
     text: 'Узнайте о выгодных сервисных предложениях Nissan именно для вашего автомобиля',
   },
 
   {
-    icon: 'relevante',
+    image: 'relevante.svg',
     title: 'актуальность',
     text: 'Выберите актуальные для вас сервисные предложения',
   },
 
   {
-    icon: 'choisen',
+    image: 'choisen.svg',
     title: 'широкий выбор',
     text: 'Выберите дилера, который вам подходит',
   },
 
   {
-    icon: 'service',
+    image: 'service.svg',
     title: 'онлайн обслуживание',
     text: 'Отправьте дилеру данные о вашем автомобиле в форме удобной анкеты',
   },
