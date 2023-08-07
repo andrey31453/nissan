@@ -118,6 +118,7 @@ const get_alias = () => {
     '@styles': src + 'assets/styles',
 
     '@ui': src + 'ui/__bunddle.js',
+    '@utils': src + 'utils/__bunddle.js',
     '@components': src + 'components/__bunddle.js',
     '@views': src + 'views/__bunddle.js',
     '@composables': src + 'composables/__bunddle.js',

@@ -1,12 +1,7 @@
 <script setup>
-import { utils_breadcrumbs } from '@utils'
-import { use_breadcrumbs } from '@composables'
-import { vars } from '@consts'
-
 const props = defineProps({
   cols: {
     type: String,
-    default: vars.cols,
   },
 
   sm: {
@@ -31,18 +26,28 @@ const props = defineProps({
 
   gap: {
     type: String,
-    default: '1',
   },
 })
-
-const breadcrumbs = use_breadcrumbs(props)
 </script>
 
 <template>
-  <utils_breadcrumbs
-    v-bind="breadcrumbs"
-    :gap="gap"
-  >
+  <div class="ui_row">
     <slot />
-  </utils_breadcrumbs>
+  </div>
 </template>
+
+<style lang="scss" scoped>
+@use '@styles/utils';
+
+.ui_row {
+  @include utils.row(
+    v-bind(gap),
+    v-bind(cols),
+    v-bind(sm),
+    v-bind(md),
+    v-bind(lg),
+    v-bind(xl),
+    v-bind(xxl)
+  );
+}
+</style>

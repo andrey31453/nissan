@@ -10,6 +10,16 @@ $breakpoints: (
   'fluid': 99999,
 );
 
+$breakpoint_paddings: (
+  'true': 5,
+  'sm': 10,
+  'md': 20,
+  'lg': 30,
+  'xl': 50,
+  'xxl': 60,
+  'fluid': 60,
+);
+
 // colors
 
 $fc: var(--font_color);
@@ -21,6 +31,7 @@ $ac: var(--alter_color);
 
 $z: var(--z_index);
 $time: var(--animation_time);
+$cols: var(--cols);
 
 // sizes
 

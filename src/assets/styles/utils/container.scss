@@ -1,22 +1,22 @@
 @use '@styles/vars';
+@use 'sass:map';
 
-// container
-@each $breakpoint_name_out, $breakpoint_value_out in vars.$breakpoints {
-  .#{$breakpoint_name_out}\:container {
-    margin-left: auto;
-    margin-right: auto;
+$container_padding: vars.$d;
 
-    width: 100%;
+@mixin container($props_breakpoint_key: 'true') {
+  margin-left: auto;
+  margin-right: auto;
 
-    @each $breakpoint_name_in, $breakpoint_value_in in vars.$breakpoints {
-      @if $breakpoint_value_in > $breakpoint_value_out {
-        @media (min-width: #{$breakpoint_value_in}px) {
-          max-width: #{$breakpoint_value_in}px;
-        }
+  width: 100%;
+
+  $props_breakpoint_value: map.get(vars.$breakpoints, $props_breakpoint_key);
+  @each $breakpoint_key, $breakpoint_value in vars.$breakpoints {
+    @if $breakpoint_value > $props_breakpoint_value {
+      $breakpoint_paddings: map.get(vars.$breakpoint_paddings, $breakpoint_key);
+
+      @media (min-width: #{$breakpoint_value + 2 * $breakpoint_paddings}px) {
+        max-width: #{$breakpoint_value}px;
       }
     }
   }
-}
-
-@mixin container() {
 }

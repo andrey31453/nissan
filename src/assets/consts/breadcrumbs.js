@@ -1,4 +1,4 @@
-const breadcrumbs = {
+export default {
   true: 0,
   sm: 576,
   md: 768,
@@ -7,5 +7,3 @@ const breadcrumbs = {
   xxl: 1400,
   fluid: 99999,
 }
-
-export default breadcrumbs

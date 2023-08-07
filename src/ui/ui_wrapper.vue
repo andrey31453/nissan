@@ -46,6 +46,10 @@ const props = defineProps({
 @use '@styles/utils';
 
 .ui_wrapper {
+  & > :deep(*) {
+    width: 100%;
+  }
+
   // direction
   &:not(.--horizontal) {
     @include utils.f(v-bind(gap), 'col');
@@ -56,7 +60,7 @@ const props = defineProps({
 
   // container
   &.--container {
-    // @include utils.padding(v-bind(padding));
+    @include utils.container();
   }
 
   // padding

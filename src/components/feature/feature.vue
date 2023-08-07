@@ -17,10 +17,6 @@ const props = defineProps({
 
 <template>
   <ui_wrapper gap="3">
-    <span>
-      {{ feature }}
-    </span>
-
     <ui_image
       :image="feature"
       :domain="feature[keys.domain] || domain"

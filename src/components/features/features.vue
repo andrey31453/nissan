@@ -45,7 +45,7 @@ const { has_locale_features, add_locale_feature } =
     <ui_error :error="error">
       <ui_wrapper gap="6">
         <ui_row
-          col="1"
+          cols="1"
           md="2"
           lg="3"
           gap="3"
