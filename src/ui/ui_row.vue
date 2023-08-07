@@ -20,21 +20,12 @@ const props = defineProps({
     default: false,
   },
 })
-const get_active_h = ({ h1, h2, h3 }) => {
-  if (h1) return 'h1'
-  if (h2) return 'h2'
-  if (h3) return 'h3'
-
-  return 'div'
-}
-
-const active_h = get_active_h(props)
 </script>
 
 <template>
-  <component :is="active_h">
+  <div>
     <slot />
-  </component>
+  </div>
 </template>
 
 <style lang="scss" scoped>

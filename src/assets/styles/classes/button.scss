@@ -1,0 +1,7 @@
+@use '@styles/utils';
+
+@mixin button($b) {
+  @include utils.font();
+
+  min-height: 100vh;
+}

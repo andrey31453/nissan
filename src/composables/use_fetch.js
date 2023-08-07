@@ -59,21 +59,40 @@ const get_simple_selection_data = (data, selection) => {
   return ref(get_data_for_key(data, selection))
 }
 
-const get_filtered_data = (data, filter) => {
-  if (!filter) return data
+const filters_wrapper = (v, filters) => {
+  let result = true
 
-  return data.filter((v) => filter(v))
+  filters.forEach((filter_func) => {
+    if (!filter_func(v)) result = false
+  })
+
+  return result
+}
+
+const get_filtered_data = (data, filters) => {
+  if (!filters) return data
+  if (type_is(filters, 'function')) return data.filter((v) => filters(v))
+
+  return data.filter((v) => filters_wrapper(v, filters))
 }
 
 const get_ref_from_data = (data, not_ref) => {
   return not_ref ? data : ref(data)
 }
 
+const get_sorted_data = (data, sort) => {
+  if (!sort) return data
+  if (type_is(sort, 'boolean')) return data.sort()
+
+  return data.sort((a, b) => sort(a, b))
+}
+
 const get_complex_selection_data = (data, selection) => {
   const target_data = get_data_for_key(data, selection.key)
-  const filtered_data = get_filtered_data(target_data, selection.filter)
+  const filtered_data = get_filtered_data(target_data, selection.filters)
+  const sorted_data = get_sorted_data(filtered_data, selection.sort)
 
-  return get_ref_from_data(filtered_data, selection.not_ref)
+  return get_ref_from_data(sorted_data, selection.not_ref)
 }
 
 const get_selection_data = (data, selection) => {

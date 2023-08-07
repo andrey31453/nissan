@@ -1,6 +1,7 @@
 const html_webpack = require('html-webpack-plugin')
 const { VueLoaderPlugin: vue_loader } = require('vue-loader')
 const copy_webpack = require('copy-webpack-plugin')
+const webpack = require('webpack')
 
 const public = __dirname + '/public/'
 const src = __dirname + '/src/'
@@ -84,6 +85,10 @@ const get_rules = (dev) => {
 
 const get_plugins = () => {
   return [
+    new webpack.DefinePlugin({
+      __VUE_OPTIONS_API__: false,
+      __VUE_PROD_DEVTOOLS__: false,
+    }),
     new vue_loader(),
     new html_webpack({
       template: src + 'index.html',
@@ -131,7 +136,7 @@ const get_serve = (dev) => {
     ? {
         open: {
           app: {
-            name: 'firefox developer edition',
+            name: 'google-chrome',
             arguments: ['--new-tab'],
           },
         },

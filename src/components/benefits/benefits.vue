@@ -16,7 +16,10 @@ validates.model(props.model)
 </script>
 
 <template>
-  <ui_wrapper gap="6">
+  <ui_wrapper
+    gap="6"
+    container
+  >
     <!-- title -->
     <ui_h
       h1
