@@ -1,11 +1,14 @@
 
 !
 
+	h1 mark
 	ui slider
 	banner -> mobile
+	banner -> logo
 	svg fill
-	ui button -> fill -> icon
 	animation time
+	import component -> script
+	ui image -> rewrite
 
 ?
 

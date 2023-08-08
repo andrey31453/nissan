@@ -1,10 +1,17 @@
 <script setup>
+import { get_locale_image } from '@helpers'
+import { keys } from '@consts'
+
 const props = defineProps({
   variant: {
     type: String,
     default: 'fill',
   },
 })
+</script>
+
+<script>
+import ui_icon from './ui_icon'
 </script>
 
 <template>
@@ -14,7 +21,10 @@ const props = defineProps({
     </span>
 
     <template v-if="variant === 'fill'">
-      <span> icon </span>
+      <ui_icon
+        icon="chevron_right"
+        variant="button"
+      />
     </template>
   </button>
 </template>

@@ -67,14 +67,14 @@ const get_rules = (dev) => {
 
     // files
     {
-      test: /\.(png|jpg|webp)$/i,
+      test: /\.(png|jpg|webp|.json)$/i,
       type: 'asset/resource',
     },
 
-    // json
+    // svg
     {
-      test: /\.json$/i,
-      type: 'asset/resource',
+      test: /\.svg$/,
+      loader: 'svg-inline-loader',
     },
   ]
 }

@@ -3,9 +3,9 @@ import { ui_wrapper, ui_h, ui_slider } from '@ui'
 import benefit from '../benefit/benefit'
 
 import { benefits, locale_folder } from './assets'
-import { use_local_image } from '@composables'
+import { use_locale_image } from '@composables'
 
-use_local_image(benefits, locale_folder)
+use_locale_image(benefits, locale_folder)
 </script>
 
 <template>
@@ -19,8 +19,10 @@ use_local_image(benefits, locale_folder)
       highlight
     >
       Мы ценим Ваше время и комфорт!
+      <br />
+      Запишитесь на сервис Nissan онлайн
     </ui_h>
-    <ui_h h1> Запишитесь на сервис Nissan онлайн </ui_h>
+
     <!-- /title -->
 
     <!-- benefit list -->

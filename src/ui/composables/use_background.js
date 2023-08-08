@@ -1,4 +1,4 @@
-import { backgrounds } from '@consts'
+import { backgrounds } from '../assets'
 
 export default (background, current_model) => {
   if (!background) return void 0

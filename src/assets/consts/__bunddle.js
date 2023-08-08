@@ -1,5 +1,4 @@
 export { default as api } from './api'
-export { default as backgrounds } from './backgrounds'
 export { default as breadcrumbs } from './breadcrumbs'
 export { default as keys } from './keys'
 export { default as locale_domain } from './locale_domain'
