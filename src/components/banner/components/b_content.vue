@@ -5,13 +5,8 @@ import { ui_wrapper, ui_button } from '@ui'
 <template>
   <ui_wrapper
     container
-    padding="3"
+    horizontal
   >
-    substrate
+    <ui_button> Тест-драйв </ui_button>
   </ui_wrapper>
 </template>
-
-<style lang="scss" scoped>
-.substrate {
-}
-</style>

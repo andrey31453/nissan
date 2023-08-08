@@ -1,5 +1,5 @@
 <script setup>
-import { ui_wrapper } from '@ui'
+import { ui_wrapper, ui_background } from '@ui'
 </script>
 
 <template>
@@ -11,9 +11,14 @@ import { ui_wrapper } from '@ui'
     >
       <ui_wrapper
         horizontal
+        fluid
         end
       >
-        <span class="image__wrapper">image__wrapper</span>
+        <ui_background
+          background="car"
+          position="right bottom"
+          :size="`${(100 * 680) / 1200}%`"
+        />
       </ui_wrapper>
     </ui_wrapper>
   </div>

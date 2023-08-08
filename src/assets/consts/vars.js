@@ -12,6 +12,10 @@ export default {
   animation_time: '180ms',
   cols: 12,
 
+  // background
+  background_size: 'contain',
+  background_repeat: 'no-repeat',
+  background_position: 'center',
   // sizes
 
   distance: '8px',

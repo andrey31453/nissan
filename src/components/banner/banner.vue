@@ -1,13 +1,11 @@
 <script setup>
-import { b_substrate, b_main, b_image } from './components'
+import { b_overlay, b_substrate, b_content, b_image } from './components'
 </script>
 
 <template>
   <div class="banner">
-    <b_main
-      class="banner__main"
-      z="3"
-    />
+    <b_overlay class="banner__overlay" />
+    <b_content class="banner__content" />
     <b_substrate class="banner__substrate" />
     <b_image class="banner__image" />
   </div>
@@ -17,14 +15,17 @@ import { b_substrate, b_main, b_image } from './components'
 @use '@styles/utils';
 
 .banner {
-  position: relative;
+  @include utils.z(0);
 
-  height: 542px;
-
-  &__main {
+  &__overlay {
     @include utils.z(1);
-
     height: 464px;
+  }
+
+  &__content {
+    @include utils.absolute(3, '0');
+
+    top: 220px;
   }
 
   &__substrate {

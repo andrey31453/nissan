@@ -1,28 +1,34 @@
-@use 'sass:string';
-@use 'sass:map';
 @use '@styles/vars';
-@use '@styles/utils/distance';
+@use '@styles/placeholders';
 
 $flex_modifiers: (
-  'true': (
-    'margin': 0,
-  ),
-  'c': (
-    'justify-content': center,
-    'align-items': center,
-  ),
-  'col': (
-    'flex-direction': column,
-  ),
-  'nw': (
-    'flex-wrap': nowrap,
-  ),
+  // complex
+  'c':
+    (
+      'justify-content': center,
+      'align-items': center,
+    ),
+
+  // direction
+  'col':
+    (
+      'flex-direction': column,
+    ),
+
+  // wrap
+  'nw':
+    (
+      'flex-wrap': nowrap,
+    ),
   'wr': (
-    y 'flex-wrap': wrap-reverse,
+    'flex-wrap': wrap-reverse,
   ),
-  'js': (
-    'justify-content': flex-start,
-  ),
+
+  // justify-content
+  'js':
+    (
+      'justify-content': flex-start,
+    ),
   'je': (
     'justify-content': flex-end,
   ),
@@ -38,9 +44,12 @@ $flex_modifiers: (
   'jsb': (
     'justify-content': space-between,
   ),
-  'as': (
-    'align-items': flex-start,
-  ),
+
+  // align-items
+  'as':
+    (
+      'align-items': flex-start,
+    ),
   'ae': (
     'align-items': flex-end,
   ),
@@ -55,21 +64,15 @@ $flex_modifiers: (
   ),
   'asb': (
     'align-items': space-between,
-  ),
+  )
 );
 
-@mixin f($gap: 1, $options_include: 'true') {
+@mixin f($gap: 1, $options_input: 'false') {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: calc(#{$gap} * #{vars.$d});
 
-  $options: string.split($options_include, ',');
-  @each $option in $options {
-    $modifiers: map.get($flex_modifiers, $option);
-    @each $rule, $value in $modifiers {
-      #{$rule}: $value;
-    }
-  }
+  @include placeholders.rule_list($flex_modifiers, $options_input);
 }

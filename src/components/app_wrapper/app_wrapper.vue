@@ -1,6 +1,12 @@
+<script setup>
+import { ui_wrapper } from '@ui'
+</script>
+
 <template>
   <div class="app_wrapper">
-    <slot />
+    <ui_wrapper>
+      <slot />
+    </ui_wrapper>
   </div>
 </template>
 

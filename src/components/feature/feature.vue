@@ -10,7 +10,7 @@ const props = defineProps({
 
   domain: {
     type: String,
-    domain: true,
+    required: true,
   },
 })
 </script>
