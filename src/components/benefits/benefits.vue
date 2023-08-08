@@ -1,11 +1,9 @@
 <script setup>
-import { ui_wrapper, ui_h, ui_slider } from '@ui'
-import benefit from '../benefit/benefit'
-
-import { benefits, locale_folder } from './assets'
+import { benefits } from './assets'
 import { use_locale_image } from '@composables'
 
-use_locale_image(benefits, locale_folder)
+import { ui_wrapper, ui_h, ui_slider } from '@ui'
+import benefit from '../benefit/benefit'
 </script>
 
 <template>

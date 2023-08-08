@@ -1,24 +1,24 @@
 export default [
   {
-    image: 'benefit.svg',
+    image: 'benefit',
     title: 'выгода',
     text: 'Узнайте о выгодных сервисных предложениях Nissan именно для вашего автомобиля',
   },
 
   {
-    image: 'relevante.svg',
+    image: 'relevante',
     title: 'актуальность',
     text: 'Выберите актуальные для вас сервисные предложения',
   },
 
   {
-    image: 'choisen.svg',
+    image: 'choisen',
     title: 'широкий выбор',
     text: 'Выберите дилера, который вам подходит',
   },
 
   {
-    image: 'service.svg',
+    image: 'service',
     title: 'онлайн обслуживание',
     text: 'Отправьте дилеру данные о вашем автомобиле в форме удобной анкеты',
   },

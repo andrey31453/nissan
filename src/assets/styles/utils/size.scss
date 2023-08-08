@@ -3,12 +3,14 @@
 $types: (
   'default': (
     'width',
-    'height',
   ),
 
   'max': (
     'max-width',
-    'max-height',
+  ),
+
+  'min': (
+    'min-width',
   ),
 );
 

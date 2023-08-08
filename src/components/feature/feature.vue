@@ -1,5 +1,4 @@
 <script setup>
-import { ui_wrapper, ui_image } from '@ui'
 import { keys } from '@consts'
 
 const props = defineProps({
@@ -13,6 +12,8 @@ const props = defineProps({
     required: true,
   },
 })
+
+import { ui_wrapper, ui_image } from '@ui'
 </script>
 
 <template>

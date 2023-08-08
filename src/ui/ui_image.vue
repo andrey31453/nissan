@@ -22,7 +22,16 @@ const alt = props.image[keys.alt]
 
 <template>
   <img
+    class="ui_image"
     :src="src"
     :alt="alt"
   />
 </template>
+
+<style lang="scss" scoped>
+@use '@styles/utils';
+
+.ui_image {
+  @include utils.size('100%', 'max');
+}
+</style>

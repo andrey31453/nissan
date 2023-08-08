@@ -27,9 +27,7 @@ use_id(features)
 
 const { has_locale_features, add_locale_feature } =
   use_locale_features(features)
-</script>
 
-<script>
 import { ui_wrapper, ui_h, ui_slider, ui_error, ui_row, ui_button } from '@ui'
 import feature from '../feature/feature'
 </script>

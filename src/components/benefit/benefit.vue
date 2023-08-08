@@ -1,6 +1,6 @@
 <script setup>
-import { ui_wrapper, ui_h, ui_image } from '@ui'
 import { vMark } from '@directives'
+import { keys } from '@consts'
 
 const props = defineProps({
   benefit: {
@@ -9,6 +9,8 @@ const props = defineProps({
     validate: (b) => b.image && b.title && b.text,
   },
 })
+
+import { ui_wrapper, ui_h, ui_icon } from '@ui'
 </script>
 
 <template>
@@ -16,7 +18,11 @@ const props = defineProps({
     gap="3"
     center
   >
-    <ui_image :image="benefit" />
+    <ui_icon
+      :icon="benefit[keys.src]"
+      variant="default"
+      size="177"
+    />
 
     <ui_h>
       {{ benefit.title }}

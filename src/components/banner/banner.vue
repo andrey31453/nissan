@@ -23,12 +23,13 @@ import { b_overlay, b_substrate, b_content, b_image } from './components'
   }
 
   &__content {
-    @include utils.absolute(3, '0');
+    @include utils.absolute(4, '0');
 
     top: 220px;
   }
 
   &__substrate {
+    @include utils.z(3);
   }
 
   &__image {

@@ -4,7 +4,7 @@ import { ui_wrapper } from '@ui'
 
 <template>
   <div class="app_wrapper">
-    <ui_wrapper>
+    <ui_wrapper gap="2">
       <slot />
     </ui_wrapper>
   </div>

@@ -10,7 +10,7 @@ export default {
 
   z_index: '1000',
   animation_time: '180ms',
-  cols: 12,
+  cols: '12',
 
   // background
   background_size: 'contain',

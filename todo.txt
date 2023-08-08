@@ -1,14 +1,11 @@
 
 !
 
-	h1 mark
 	ui slider
 	banner -> mobile
-	banner -> logo
-	svg fill
 	animation time
-	import component -> script
 	ui image -> rewrite
+	car image add shadow
 
 ?
 

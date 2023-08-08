@@ -8,9 +8,7 @@ const props = defineProps({
     default: 'fill',
   },
 })
-</script>
 
-<script>
 import ui_icon from './ui_icon'
 </script>
 
@@ -23,7 +21,7 @@ import ui_icon from './ui_icon'
     <template v-if="variant === 'fill'">
       <ui_icon
         icon="chevron_right"
-        variant="button"
+        size="14"
       />
     </template>
   </button>
