@@ -5,9 +5,11 @@
 </template>
 
 <style lang="scss" scoped>
-@use '@styles/classes';
+@use '@styles/utils';
 
 .app_wrapper {
-  @include classes.app();
+  @include utils.font();
+
+  min-height: 100vh;
 }
 </style>

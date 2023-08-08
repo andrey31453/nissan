@@ -1,20 +1,5 @@
 # nissan
 
-туду
-
-    !
-    	ui row
-    	ui slider
-    	banner
-    	svg fill
-    	ui button -> fill -> icon
-
-    ?
-    	add theme
-    	add models
-    	nuxt
-    	typescript
-
 контейнер
 расширил ширину контейнера после 1440px
 формально по макету макс ширина 1200 и все, но я обычно использую еще ххл расширение

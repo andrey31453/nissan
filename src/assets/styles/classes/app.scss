@@ -1,7 +1,0 @@
-@use '@styles/utils';
-
-@mixin app() {
-  @include utils.font();
-
-  min-height: 100vh;
-}

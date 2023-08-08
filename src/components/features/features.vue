@@ -1,17 +1,12 @@
 <script setup>
-import { api } from '@consts'
+import { api, keys } from '@consts'
 import { use_fetch, use_id } from '@composables'
 import { use_locale_features } from './composables'
 import { use_car_store } from '@store'
-import { keys } from '@consts'
-
-import { ui_wrapper, ui_h, ui_slider, ui_error, ui_row, ui_button } from '@ui'
-import feature from '../feature/feature'
 
 // features api
 
 const car_store = use_car_store()
-
 const [error, features, title, domain] = await use_fetch(
   api.features,
   {
@@ -32,6 +27,11 @@ use_id(features)
 
 const { has_locale_features, add_locale_feature } =
   use_locale_features(features)
+
+// components
+
+import { ui_wrapper, ui_h, ui_slider, ui_error, ui_row, ui_button } from '@ui'
+import feature from '../feature/feature'
 </script>
 
 <template>
@@ -62,12 +62,17 @@ const { has_locale_features, add_locale_feature } =
         </ui_row>
 
         <template v-if="has_locale_features">
-          <ui_button
-            variant="outline"
-            @click="add_locale_feature"
+          <ui_wrapper
+            center
+            horizontal
           >
-            Добавить особенность
-          </ui_button>
+            <ui_button
+              variant="outline"
+              @click="add_locale_feature"
+            >
+              Добавить особенность
+            </ui_button>
+          </ui_wrapper>
         </template>
       </ui_wrapper>
     </ui_error>

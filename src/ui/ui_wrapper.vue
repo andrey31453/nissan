@@ -5,12 +5,22 @@ const props = defineProps({
     default: false,
   },
 
+  end: {
+    type: Boolean,
+    default: false,
+  },
+
   container: {
     type: Boolean,
     default: false,
   },
 
   horizontal: {
+    type: Boolean,
+    default: false,
+  },
+
+  fluid: {
     type: Boolean,
     default: false,
   },
@@ -32,7 +42,10 @@ const props = defineProps({
     :class="[
       'ui_wrapper',
       {
+        '--center': center,
+        '--end': end,
         '--horizontal': horizontal,
+        '--fluid': fluid,
         '--container': container,
         '--padding': padding,
       },
@@ -46,21 +59,33 @@ const props = defineProps({
 @use '@styles/utils';
 
 .ui_wrapper {
-  & > :deep(*) {
-    width: 100%;
-  }
-
   // direction
   &:not(.--horizontal) {
     @include utils.f(v-bind(gap), 'col');
+
+    & > :deep(*) {
+      width: 100%;
+    }
   }
   &.--horizontal {
     @include utils.f(v-bind(gap));
   }
 
+  // modifiers
+  &.--center {
+    @include utils.f(v-bind(gap), 'jc');
+  }
+  &.--end {
+    @include utils.f(v-bind(gap), 'je');
+  }
+
   // container
   &.--container {
     @include utils.container();
+  }
+
+  &.--fluid {
+    height: 100%;
   }
 
   // padding

@@ -1,5 +1,3 @@
-const locale_images_folder = 'assets/benefits'
-
 export default [
   {
     image: 'benefit.svg',
