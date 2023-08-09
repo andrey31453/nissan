@@ -52,7 +52,7 @@ const { visible_count, elem_count, has_slider } = use_counts(
 )
 
 const {
-  slider,
+  slids,
   wrapper,
 
   elem_width,
@@ -70,7 +70,7 @@ const {
   on_drag_end,
 } = use_mouse_drag()
 
-const { on_breakpoint } = use_on_breakpoint({
+const { on_breakpoint, is_visible } = use_on_breakpoint({
   visible_count,
   elem_count,
 })
@@ -81,39 +81,70 @@ import { vBreakpoint, vResize } from '@directives'
 </script>
 
 <template>
-  <div
-    ref="slider"
-    :class="[
-      'ui_slider',
-      {
-        '--draggable': is_drag,
-      },
-    ]"
-    v-breakpoint:init="on_breakpoint"
-    v-resize:init="on_resize"
-    @mousedown="on_drag_start"
-    @mousemove="on_drag"
-    @mouseup="on_drag_end"
-    @touchstart="on_drag_start"
-    @touchmove="on_drag"
-    @touchend="on_drag_end"
-    @mouseleave="on_drag_end"
-  >
-    <template v-if="has_slider"> slider </template>
+  <div class="ui_slider">
+    <!-- slids -->
     <div
-      class="ui_slider__wrapper"
-      ref="wrapper"
+      ref="slids"
+      :class="[
+        'ui_slider__slids',
+        'slids',
+        {
+          '--draggable': is_drag,
+        },
+      ]"
+      v-breakpoint:init="on_breakpoint"
+      v-resize:init="on_resize"
+      @mousedown="on_drag_start"
+      @mousemove="on_drag"
+      @mouseup="on_drag_end"
+      @touchstart="on_drag_start"
+      @touchmove="on_drag"
+      @touchend="on_drag_end"
+      @mouseleave="on_drag_end"
     >
-      <slot />
+      <div
+        class="slids__wrapper"
+        ref="wrapper"
+      >
+        <slot />
+      </div>
     </div>
+    <!-- /slids -->
+
+    <!-- cntrls -->
+    <template v-if="has_slider">
+      <div :class="['ui_slider__cntrls', 'cntrls']">
+        <template
+          v-for="(elem, elem_idx) in 4"
+          :key="elem_idx"
+        >
+          <div
+            :class="[
+              'cntrls__elem',
+              {
+                '--visible': is_visible(elem_idx),
+              },
+            ]"
+          />
+        </template>
+      </div>
+    </template>
+    <!-- /cntrls -->
   </div>
 </template>
 
 <style lang="scss" scoped>
 @use '@styles/utils';
+@use '@styles/vars';
 
 .ui_slider {
+  @include utils.f(1, 'col');
+}
+
+// slids
+.slids {
   position: relative;
+  width: 100%;
   height: v-bind(slider_height);
   overflow: hidden;
   user-select: none;
@@ -136,6 +167,28 @@ import { vBreakpoint, vResize } from '@directives'
     // slots
     & > :deep(*) {
       width: v-bind(elem_width);
+    }
+  }
+}
+
+// cntrls
+.cntrls {
+  @include utils.f(1, 'nw,c');
+
+  // elem
+  &__elem {
+    width: calc(2 * vars.$d);
+    height: calc(2 * vars.$d);
+
+    border: 2px solid vars.$ac;
+    cursor: pointer;
+
+    &.--visible {
+      @include utils.before(2);
+
+      &::before {
+        background-color: vars.$dc;
+      }
     }
   }
 }

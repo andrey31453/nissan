@@ -46,7 +46,7 @@ import { b_overlay, b_substrate, b_content, b_image } from './components'
   }
 
   &__content {
-    @include utils.absolute(4, '0');
+    @include utils.absolute(4);
 
     top: v-bind(banner_content_height);
   }
@@ -56,7 +56,7 @@ import { b_overlay, b_substrate, b_content, b_image } from './components'
   }
 
   &__image {
-    @include utils.absolute(2, '0');
+    @include utils.absolute(2);
   }
 }
 </style>

@@ -5,14 +5,16 @@
 
 **?**
 
+- ui slider - > not always correct height calculate
+- ui slider - > drag with double touchpad
 - ui slider - > closer
-- ui slider - > remove @on-s
+- ui slider - > remove @on-s on ui component
 - scroll style
 - ui folder - > shift files
 - v resize - > composable
 - ui slider - > refactor
 - ui slider - > drags
-- animation time
+- add animation time scrypt
 - ui image - > rewrite
 - ui composables
 - ui assets

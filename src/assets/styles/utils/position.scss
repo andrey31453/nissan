@@ -5,22 +5,12 @@
   z-index: $z;
 }
 
-$sizes: (
-  '0': (
-    'top': 0,
-    'bottom': 0,
-    'left': 0,
-    'right': 0,
-  ),
-);
-@mixin absolute($z, $size: false) {
+@mixin absolute($z, $offset: 0) {
   position: absolute;
   z-index: $z;
 
-  @if $size {
-    $current_size: map.get($sizes, $size);
-    @each $size_rule, $size_value in $current_size {
-      #{$size_rule}: #{$size_value};
-    }
-  }
+  top: #{$offset}px;
+  bottom: #{$offset}px;
+  left: #{$offset}px;
+  right: #{$offset}px;
 }

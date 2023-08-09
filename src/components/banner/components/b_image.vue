@@ -61,7 +61,7 @@ import { ui_wrapper, ui_background } from '@ui'
   @include utils.z(0);
 
   &__background_wrapper {
-    @include utils.absolute(0, '0');
+    @include utils.absolute(0);
   }
 }
 </style>

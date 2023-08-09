@@ -1,21 +1,21 @@
 import { ref } from 'vue'
 import { vars } from '@consts'
 
-const slider = ref(null)
+const slids = ref(null)
 const wrapper = ref(null)
 
 const elem_width = ref(null)
 const slider_height = ref(null)
 
 const get_elem_width = (count) => {
-  return `calc(${slider.value.offsetWidth / count.value}px - ${
+  return `calc(${slids.value.offsetWidth / count.value}px - ${
     count.value - 1
   } * ${vars.distance})`
 }
 
 const get_slider_height = () => {
   const slider_height = [...wrapper.value.children].reduce(
-    (acc, slider_elem_node) => Math.max(acc, slider_elem_node.offsetHeight),
+    (acc, slide_node) => Math.max(acc, slide_node.offsetHeight),
     0
   )
   return `${slider_height}px`
@@ -30,7 +30,7 @@ export default (count) => {
   const on_resize = get_on_resize(count)
 
   return {
-    slider,
+    slids,
     wrapper,
 
     elem_width,
