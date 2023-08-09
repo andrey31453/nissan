@@ -1,13 +1,14 @@
 
 !
 
-	ui slider
-	banner -> mobile
+	ui slider -> buttons
 	тень машины дообрезать
 	firefox
 	safari
 
 ?
+	ui slider -> refactor
+	ui slider -> drags
 	animation time
 	ui image -> rewrite
 	ui composables
