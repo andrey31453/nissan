@@ -1,12 +1,14 @@
 **!**
 
 - ui slider - > buttons
+- ui slider - > limits
 - тень машины дообрезать
 - firefox
 - safari
 
 **?**
 
+- ui slider - > closer
 - scroll style
 - ui folder - > shift files
 - v resize - > composable
