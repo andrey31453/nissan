@@ -1,10 +1,9 @@
 import { ref } from 'vue'
 
-const active_slide = ref(null)
 const left = ref(null)
+const is_drag = ref(false)
 
 let drag = {
-  write: false,
   left: 0,
   start_left: 0,
   screen_x: 0,
@@ -25,8 +24,9 @@ const get_screen_x = (e) => {
 }
 
 const set_init_drag = (current_left, current_screen_x) => {
+  is_drag.value = true
+
   drag = {
-    write: true,
     left: current_left,
     start_left: current_left,
     screen_x: current_screen_x,
@@ -35,7 +35,7 @@ const set_init_drag = (current_left, current_screen_x) => {
 }
 
 const on_mouse_down = (e) => {
-  if (drag.write) return void 0
+  if (is_drag.value) return void 0
 
   const current_left = drag.left
   const current_screen_x = get_screen_x(e)
@@ -43,7 +43,7 @@ const on_mouse_down = (e) => {
 }
 
 const on_mouse_move = (e) => {
-  if (!drag.write) return void 0
+  if (!is_drag.value) return void 0
 
   const screenX = get_screen_x(e)
   set_drag_left(screenX)
@@ -51,13 +51,13 @@ const on_mouse_move = (e) => {
 }
 
 const on_mouse_up = () => {
-  drag.write = false
+  is_drag.value = false
 }
 
 export default () => {
   return {
-    active_slide,
     left,
+    is_drag,
 
     on_mouse_down,
     on_mouse_move,

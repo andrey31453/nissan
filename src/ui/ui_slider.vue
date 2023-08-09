@@ -6,7 +6,7 @@ import {
   use_on_resize,
   use_on_breakpoint,
   use_counts,
-  use_slider,
+  use_mouse_drag,
 } from './composables'
 import { use_breakpoint_props } from '@composables'
 import { use_app_store } from '@store'
@@ -62,16 +62,15 @@ const {
 } = use_on_resize(visible_count)
 
 const {
-  active_slide,
   left,
+  is_drag,
 
   on_mouse_down,
   on_mouse_move,
   on_mouse_up,
-} = use_slider()
+} = use_mouse_drag()
 
 const { on_breakpoint } = use_on_breakpoint({
-  active_slide,
   visible_count,
   elem_count,
 })
@@ -84,7 +83,12 @@ import { vBreakpoint, vResize } from '@directives'
 <template>
   <div
     ref="slider"
-    class="ui_slider"
+    :class="[
+      'ui_slider',
+      {
+        '--draggable': is_drag,
+      },
+    ]"
     v-breakpoint:init="on_breakpoint"
     v-resize:init="on_resize"
     @mousedown="on_mouse_down"
@@ -93,6 +97,7 @@ import { vBreakpoint, vResize } from '@directives'
     @touchstart="on_mouse_down"
     @touchmove="on_mouse_move"
     @touchend="on_mouse_up"
+    @mouseleave="on_mouse_up"
   >
     <template v-if="has_slider"> slider </template>
     <div
@@ -112,6 +117,11 @@ import { vBreakpoint, vResize } from '@directives'
   height: v-bind(slider_height);
   overflow: hidden;
   user-select: none;
+
+  cursor: grab;
+  &.--draggable {
+    cursor: grabbing;
+  }
 
   &__wrapper {
     @include utils.f(v-bind(gap), 'nw,as');
