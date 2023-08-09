@@ -34,7 +34,7 @@ const props = defineProps({
   },
 })
 
-const { _xs, _sm, _md, _lg, _xl, _xxl } = use_breakpoint_props(props)
+const { xs, sm, md, lg, xl, xxl } = use_breakpoint_props(props)
 </script>
 
 <template>
@@ -49,12 +49,12 @@ const { _xs, _sm, _md, _lg, _xl, _xxl } = use_breakpoint_props(props)
 .ui_row {
   @include utils.row(
     v-bind(gap),
-    v-bind(_xs),
-    v-bind(_sm),
-    v-bind(_md),
-    v-bind(_lg),
-    v-bind(_xl),
-    v-bind(_xxl)
+    v-bind(xs),
+    v-bind(sm),
+    v-bind(md),
+    v-bind(lg),
+    v-bind(xl),
+    v-bind(xxl)
   );
 }
 </style>

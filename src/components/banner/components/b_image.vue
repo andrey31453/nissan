@@ -3,13 +3,19 @@ import { ref } from 'vue'
 
 import { vBreakpoint } from '@directives'
 import { use_breakpoint_props } from '@composables'
-import { image_breakpoint_sizes } from '../assets'
+import { image_breakpoint_props } from '../assets'
 
-const image_breakpoint_sizes1 = 1
+// image_size
+
+const image_breakpoints = use_breakpoint_props(image_breakpoint_props)
 
 const image_size = ref(null)
 
-const on_breakpoint = (b) => {}
+const on_breakpoint = (b) => {
+  image_size.value = image_breakpoints[b]
+}
+
+// components
 
 import { ui_wrapper, ui_background } from '@ui'
 </script>

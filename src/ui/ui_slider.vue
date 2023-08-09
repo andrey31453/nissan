@@ -41,8 +41,6 @@ const props = defineProps({
 const breakpoints = use_breakpoint_props(props)
 
 const slot = useSlots().default()
-console.log('useSlots(): ', useSlots())
-
 const elems_quantity = slot[0].children.length
 
 const slider = ref(null)
@@ -51,7 +49,7 @@ const wrapper = ref(null)
 const app_store = use_app_store()
 
 const get_elem_width = () => {
-  const count = breakpoints[`_${app_store.breakpoint}`]
+  const count = breakpoints[app_store.breakpoint]
 
   return `calc(${slider.value.offsetWidth / count}px - ${count - 1} * ${
     vars.distance
@@ -69,13 +67,13 @@ const get_slider_height = () => {
 const elem_width = ref(null)
 const slider_height = ref(null)
 
-const on_breakpoint = (b) => {
-  console.log('b: ', b)
-}
-
 const on_resize = (w) => {
   elem_width.value = get_elem_width()
   slider_height.value = get_slider_height()
+}
+
+const on_breakpoint = (b) => {
+  console.log('b: ', b)
 }
 </script>
 
