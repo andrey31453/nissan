@@ -7,16 +7,14 @@ import {
 
 const resize_cb = ref(null)
 
-// helpers
-
-const get_resize_cb = (binding) => () =>
-  binding.value(document.documentElement.clientWidth)
-
-// general
+const get_resize_cb = (el, binding) => () => {
+  el.style.height = `${el.clientWidth / binding.value}px`
+  el.style.overflow = 'hidden'
+}
 
 export default {
-  mounted: (_, binding) => {
-    resize_cb.value = get_resize_cb(binding)
+  mounted: (el, binding) => {
+    resize_cb.value = get_resize_cb(el, binding)
 
     add_resize_listener(binding.arg, resize_cb.value)
   },

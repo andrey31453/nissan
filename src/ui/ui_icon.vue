@@ -13,7 +13,7 @@ const props = defineProps({
 
   variant: {
     type: String,
-    variant: 'current',
+    default: 'current',
   },
 })
 

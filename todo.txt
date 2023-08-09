@@ -2,12 +2,9 @@
 !
 
 	ui slider
-	car image add shadow
-	animation time fast
 	banner -> mobile
 	firefox
 	safari
-	обрезать картинки
 
 ?
 	animation time

@@ -1,4 +1,5 @@
 @use '@styles/vars';
+@use '@styles/placeholders';
 @use 'sass:map';
 
 $variants: (
@@ -11,6 +12,8 @@ $variants: (
 
 @mixin svg($variant: 'default') {
   $current_variant: map.get($variants, $variant);
+
+  @include placeholders.animation();
 
   &:not([fill='none']) {
     fill: $current_variant;

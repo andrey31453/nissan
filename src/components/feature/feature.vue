@@ -1,5 +1,6 @@
 <script setup>
 import { keys } from '@consts'
+import { vOverflow } from '@directives'
 
 const props = defineProps({
   feature: {
@@ -18,10 +19,12 @@ import { ui_wrapper, ui_image } from '@ui'
 
 <template>
   <ui_wrapper gap="3">
-    <ui_image
-      :image="feature"
-      :domain="feature[keys.domain] || domain"
-    />
+    <div v-overflow:init="1.92">
+      <ui_image
+        :image="feature"
+        :domain="feature[keys.domain] || domain"
+      />
+    </div>
 
     <span>
       {{ feature.description }}

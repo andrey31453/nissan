@@ -18,8 +18,8 @@ import { ui_wrapper, ui_background } from '@ui'
       <ui_background
         class="image__background_wrapper"
         background="shadow"
-        position="right bottom"
-        :size="`${(100 * 680) / 1200}%`"
+        position="right 92%"
+        size="60%"
       />
       <!-- /shadow -->
 
@@ -27,8 +27,8 @@ import { ui_wrapper, ui_background } from '@ui'
       <ui_background
         class="image__background_wrapper"
         background="car"
-        position="right bottom"
-        :size="`${(100 * 680) / 1200}%`"
+        position="right 92%"
+        size="60%"
       />
       <!-- /car -->
     </ui_wrapper>

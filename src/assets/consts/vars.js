@@ -19,8 +19,10 @@ export default {
   // pararms
 
   z_index: '1000',
-  animation_time: '180ms',
   cols: '12',
+
+  animation_time: '60ms',
+  animation_method: 'linear',
 
   // background
   background_size: 'contain',
