@@ -118,11 +118,13 @@ import { vBreakpoint, vResize } from '@directives'
   overflow: hidden;
   user-select: none;
 
+  // cursor
   cursor: grab;
   &.--draggable {
     cursor: grabbing;
   }
 
+  // wrapper
   &__wrapper {
     @include utils.f(v-bind(gap), 'nw,as');
 
@@ -131,6 +133,7 @@ import { vBreakpoint, vResize } from '@directives'
     left: v-bind(left);
     top: 0;
 
+    // slots
     & > :deep(*) {
       width: v-bind(elem_width);
     }
