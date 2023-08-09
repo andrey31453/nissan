@@ -4,7 +4,7 @@ import { ref } from 'vue'
 import { vars } from '@consts'
 import {
   use_on_resize,
-  use_on_breakpoint,
+  use_on_control,
   use_counts,
   use_mouse_drag,
 } from './composables'
@@ -70,7 +70,7 @@ const {
   on_drag_end,
 } = use_mouse_drag()
 
-const { on_breakpoint, is_visible } = use_on_breakpoint({
+const { is_visible } = use_on_control({
   visible_count,
   elem_count,
 })
@@ -92,7 +92,6 @@ import { vBreakpoint, vResize } from '@directives'
           '--draggable': is_drag,
         },
       ]"
-      v-breakpoint:init="on_breakpoint"
       v-resize:init="on_resize"
       @mousedown="on_drag_start"
       @mousemove="on_drag"

@@ -27,8 +27,9 @@ import benefit from '../benefit/benefit'
     <ui_slider
       xs="1"
       sm="2"
-      md="3"
-      lg="4"
+      md="2"
+      xl="3"
+      xxl="4"
       gap="4"
     >
       <template
