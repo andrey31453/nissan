@@ -68,8 +68,8 @@ const on_resize = (w) => {
   <div
     ref="slider"
     class="ui_slider"
-    v-breakpoint="on_breakpoint"
-    v-resize="on_resize"
+    v-breakpoint:init="on_breakpoint"
+    v-resize:init="on_resize"
   >
     <div class="ui_slider__wrapper">
       <slot />
@@ -81,7 +81,7 @@ const on_resize = (w) => {
 @use '@styles/utils';
 
 .ui_slider {
-  height: 360px;
+  height: 315px;
   width: 100%;
   position: relative;
   overflow: hidden;

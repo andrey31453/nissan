@@ -113,17 +113,19 @@ const get_alias = () => {
     '@': src,
     '@public': public,
 
-    '@consts': src + 'assets/consts/__bunddle.js',
-    '@helpers': src + 'assets/helpers/__bunddle.js',
+    '@consts': src + 'assets/consts/__bunddle',
+    '@helpers': src + 'assets/helpers/__bunddle',
     '@styles': src + 'assets/styles',
 
-    '@ui': src + 'ui/__bunddle.js',
-    '@components': src + 'components/__bunddle.js',
-    '@views': src + 'views/__bunddle.js',
-    '@composables': src + 'composables/__bunddle.js',
-    '@directives': src + 'directives/__bunddle.js',
+    '@ui': src + 'ui/__bunddle',
+    '@components': src + 'components/__bunddle',
+    '@views': src + 'views/__bunddle',
+    '@composables': src + 'composables/__bunddle',
 
-    '@store': src + 'store/__bunddle.js',
+    '@directives': src + 'directives/__bunddle',
+    '@directives:helpers': src + 'directives/helpers/__bunddle',
+
+    '@store': src + 'store/__bunddle',
   }
 }
 

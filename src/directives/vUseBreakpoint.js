@@ -1,7 +1,9 @@
+import { use_app_store } from '@store'
 import { vars } from '@consts'
-import { ref } from 'vue'
 
-const get_window_breakpoint = (width, breakpoints) => {
+const { breakpoints } = vars
+
+const get_window_breakpoint = (width) => {
   return Object.keys(breakpoints).reduce((acc, breakpoint_key) => {
     if (width > breakpoints[breakpoint_key]) {
       acc = breakpoint_key
@@ -11,40 +13,25 @@ const get_window_breakpoint = (width, breakpoints) => {
   }, null)
 }
 
-const not_changed_active_breakpoint = ({
-  active_breakpoint,
-  width,
-  breakpoints,
-}) => {
-  const window_breakpoint = get_window_breakpoint(width, breakpoints)
+const set_breakpoint = ({ el, app_store, window_breakpoint }) => {
+  if (app_store.breakpoint === window_breakpoint) return void 0
 
-  return active_breakpoint.value === window_breakpoint
+  app_store.breakpoint = window_breakpoint
+  el.dataset.breakpoint = window_breakpoint
 }
 
-const on_resize = ({ cb, width, breakpoints, active_breakpoint }) => {
-  if (
-    not_changed_active_breakpoint({ active_breakpoint, width, breakpoints })
-  ) {
-    return void 0
-  }
-}
-
-const call_on_resize = ({ breakpoints, active_breakpoint, binding }) => {
+const on_resize = ({ el, app_store }) => {
   const width = document.documentElement.clientWidth
-  const cb = binding.value
+  const window_breakpoint = get_window_breakpoint(width)
 
-  on_resize({ cb, width, breakpoints, active_breakpoint })
+  set_breakpoint({ el, app_store, window_breakpoint })
 }
 
 export default {
-  mounted: (_, binding) => {
-    console.log('_: ', _)
-    const { breakpoints } = vars
-    const active_breakpoint = ref(null)
+  mounted: (el) => {
+    const app_store = use_app_store()
 
-    window.addEventListener('resize', () =>
-      call_on_resize({ breakpoints, active_breakpoint, binding })
-    )
-    call_on_resize({ breakpoints, active_breakpoint, binding })
+    window.addEventListener('resize', () => on_resize({ el, app_store }))
+    on_resize({ el, app_store })
   },
 }
