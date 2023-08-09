@@ -1,9 +1,7 @@
 <script setup>
-import { ref, onMounted, useSlots } from 'vue'
-
-import { use_breakpoint_props } from '@composables'
 import { vars } from '@consts'
-import { vBreakpoint, vResize } from '@directives'
+import { use_on_resize, use_on_breakpoint, use_counts } from './composables'
+import { use_breakpoint_props } from '@composables'
 import { use_app_store } from '@store'
 
 const props = defineProps({
@@ -39,42 +37,28 @@ const props = defineProps({
 })
 
 const breakpoints = use_breakpoint_props(props)
-
-const slot = useSlots().default()
-const elems_quantity = slot[0].children.length
-
-const slider = ref(null)
-const wrapper = ref(null)
-
 const app_store = use_app_store()
 
-const get_elem_width = () => {
-  const count = breakpoints[app_store.breakpoint]
+const { visible_count, elem_count } = use_counts(breakpoints, app_store)
 
-  return `calc(${slider.value.offsetWidth / count}px - ${count - 1} * ${
-    vars.distance
-  })`
-}
-const get_slider_height = () => {
-  const slider_height = [...wrapper.value.children].reduce(
-    (acc, slider_elem_node) => Math.max(acc, slider_elem_node.offsetHeight),
-    0
-  )
+const {
+  slider,
+  wrapper,
 
-  return `${slider_height}px`
-}
+  elem_width,
+  slider_height,
 
-const elem_width = ref(null)
-const slider_height = ref(null)
+  on_resize,
+} = use_on_resize(visible_count)
 
-const on_resize = (w) => {
-  elem_width.value = get_elem_width()
-  slider_height.value = get_slider_height()
-}
+const { on_breakpoint, has_slider } = use_on_breakpoint(
+  visible_count,
+  elem_count
+)
 
-const on_breakpoint = (b) => {
-  console.log('b: ', b)
-}
+//
+
+import { vBreakpoint, vResize } from '@directives'
 </script>
 
 <template>
@@ -84,6 +68,7 @@ const on_breakpoint = (b) => {
     v-breakpoint:init="on_breakpoint"
     v-resize:init="on_resize"
   >
+    <template v-if="has_slider"> slider </template>
     <div
       class="ui_slider__wrapper"
       ref="wrapper"
@@ -98,10 +83,8 @@ const on_breakpoint = (b) => {
 
 .ui_slider {
   position: relative;
-  overflow: hidden;
-
-  width: 100%;
   height: v-bind(slider_height);
+  overflow: hidden;
 
   &__wrapper {
     @include utils.f(v-bind(gap), 'nw,as');

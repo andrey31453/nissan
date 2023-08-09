@@ -1,10 +1,12 @@
 <script setup>
-import { vUseBreakpoint } from '@directives'
 import { use_app_store } from '@store'
 
 const app_store = use_app_store()
 
+//
+
 import { ui_wrapper } from '@ui'
+import { vUseBreakpoint } from '@directives'
 </script>
 
 <template>

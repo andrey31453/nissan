@@ -1,6 +1,5 @@
 <script setup>
 import { keys } from '@consts'
-import { vOverflow } from '@directives'
 
 const props = defineProps({
   feature: {
@@ -14,6 +13,7 @@ const props = defineProps({
   },
 })
 
+import { vOverflow } from '@directives'
 import { ui_wrapper, ui_image } from '@ui'
 </script>
 

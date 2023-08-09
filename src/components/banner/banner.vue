@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue'
 
-import { vBreakpoint } from '@directives'
 import { use_breakpoint_props } from '@composables'
 import { banner_breakpoint_props } from './assets'
 
@@ -17,8 +16,9 @@ const on_breakpoint = (b) => {
   banner_content_height.value = banner_breakpoints[b].content_height
 }
 
-// components
+//
 
+import { vBreakpoint } from '@directives'
 import { b_overlay, b_substrate, b_content, b_image } from './components'
 </script>
 

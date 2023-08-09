@@ -1,5 +1,4 @@
 <script setup>
-import { vMark } from '@directives'
 import { keys } from '@consts'
 
 const props = defineProps({
@@ -10,6 +9,9 @@ const props = defineProps({
   },
 })
 
+//
+
+import { vMark, vTextCenter } from '@directives'
 import { ui_wrapper, ui_h, ui_icon } from '@ui'
 </script>
 
@@ -18,7 +20,7 @@ import { ui_wrapper, ui_h, ui_icon } from '@ui'
     gap="3"
     center
     original
-    class="benefit"
+    v-text-center
   >
     <ui_icon
       :icon="benefit[keys.src]"

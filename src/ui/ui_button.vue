@@ -30,7 +30,6 @@ import ui_icon from './ui_icon'
 <style lang="scss" scoped>
 @use '@styles/vars';
 @use '@styles/utils';
-@use '@styles/placeholders';
 
 %hover {
   background-color: vars.$dc;
@@ -38,7 +37,7 @@ import ui_icon from './ui_icon'
 }
 
 .ui_button {
-  @include placeholders.animation();
+  @include utils.animation();
 
   width: vars.$button_width;
   height: vars.$button_height;

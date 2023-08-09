@@ -1,3 +1,6 @@
 export { default as use_background } from './composables/use_background'
 export { default as use_color } from './composables/use_color'
 export { default as use_ui_h_render } from './composables/use_ui_h_render'
+export { default as use_on_resize } from './composables/use_on_resize'
+export { default as use_on_breakpoint } from './composables/use_on_breakpoint'
+export { default as use_counts } from './composables/use_counts'
