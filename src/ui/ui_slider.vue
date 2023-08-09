@@ -70,7 +70,7 @@ const {
   on_drag_end,
 } = use_mouse_drag()
 
-const { is_visible } = use_on_control({
+const { is_visible, on_cntrl_elem } = use_on_control({
   visible_count,
   elem_count,
 })
@@ -124,6 +124,7 @@ import { vBreakpoint, vResize } from '@directives'
                 '--visible': is_visible(elem_idx),
               },
             ]"
+            @click="on_cntrl_elem(elem_idx)"
           />
         </template>
       </div>
