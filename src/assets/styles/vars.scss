@@ -36,6 +36,7 @@ $animation_method: var(--animation_method);
 // sizes
 
 $d: var(--distance);
+$dN: calc(-1 * var(--distance));
 $brad: var(--border_radius);
 $scroll_width: var(--scroll_width);
 

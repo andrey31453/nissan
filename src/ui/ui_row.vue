@@ -1,11 +1,11 @@
 <script setup>
-import { use_breakpoint_props } from './composables'
+import { use_breakpoint_props } from '@composables'
 import { vars } from '@consts'
 
 const props = defineProps({
   xs: {
     type: String,
-    default: vars.xs,
+    default: vars.cols,
   },
 
   sm: {

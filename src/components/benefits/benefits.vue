@@ -10,6 +10,7 @@ import benefit from '../benefit/benefit'
   <ui_wrapper
     gap="6"
     container
+    class="benefits"
   >
     <!-- title -->
     <ui_h
@@ -20,15 +21,14 @@ import benefit from '../benefit/benefit'
       <br />
       Запишитесь на сервис Nissan онлайн
     </ui_h>
-
     <!-- /title -->
 
     <!-- benefit list -->
     <ui_slider
-      col="1"
+      xs="1"
       sm="2"
       md="3"
-      xl="3"
+      lg="4"
       gap="4"
     >
       <template

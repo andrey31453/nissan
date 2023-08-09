@@ -27,7 +27,14 @@ const render = use_ui_h_render(props)
 </script>
 
 <template>
-  <render :class="['ui_h', { '--highlight': highlight }]" />
+  <render
+    :class="[
+      'ui_h',
+      {
+        '--highlight': highlight,
+      },
+    ]"
+  />
 </template>
 
 <style lang="scss" scoped>
@@ -46,12 +53,16 @@ const render = use_ui_h_render(props)
   }
 
   &.--highlight {
+    padding-top: calc(2 * vars.$d);
+
     :deep(span:first-child) {
       @include utils.before();
 
       &::before {
         height: 4px;
         background-color: vars.$dc;
+
+        top: calc(2 * vars.$dN);
       }
     }
   }

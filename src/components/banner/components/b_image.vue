@@ -1,4 +1,16 @@
 <script setup>
+import { ref } from 'vue'
+
+import { vBreakpoint } from '@directives'
+import { use_breakpoint_props } from '@composables'
+import { image_breakpoint_sizes } from '../assets'
+
+const image_breakpoint_sizes1 = 1
+
+const image_size = ref(null)
+
+const on_breakpoint = (b) => {}
+
 import { ui_wrapper, ui_background } from '@ui'
 </script>
 
@@ -8,6 +20,7 @@ import { ui_wrapper, ui_background } from '@ui'
     container
     fluid
     end
+    v-breakpoint:init="on_breakpoint"
   >
     <ui_wrapper
       horizontal
@@ -19,7 +32,7 @@ import { ui_wrapper, ui_background } from '@ui'
         class="image__background_wrapper"
         background="shadow"
         position="right 92%"
-        size="60%"
+        :size="image_size"
       />
       <!-- /shadow -->
 
@@ -28,7 +41,7 @@ import { ui_wrapper, ui_background } from '@ui'
         class="image__background_wrapper"
         background="car"
         position="right 92%"
-        size="60%"
+        :size="image_size"
       />
       <!-- /car -->
     </ui_wrapper>

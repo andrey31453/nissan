@@ -3,6 +3,7 @@
 
 	ui slider
 	banner -> mobile
+	тень машины дообрезать
 	firefox
 	safari
 
