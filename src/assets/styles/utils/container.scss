@@ -1,7 +1,7 @@
 @use '@styles/vars';
 @use 'sass:map';
 
-@mixin container($props_breakpoint_key: 'true') {
+@mixin container($props_breakpoint_key: 'xs') {
   margin-left: auto;
   margin-right: auto;
 

@@ -17,6 +17,8 @@ import { ui_wrapper, ui_h, ui_icon } from '@ui'
   <ui_wrapper
     gap="3"
     center
+    original
+    class="benefit"
   >
     <ui_icon
       :icon="benefit[keys.src]"
@@ -33,3 +35,9 @@ import { ui_wrapper, ui_h, ui_icon } from '@ui'
     </div>
   </ui_wrapper>
 </template>
+
+<style lang="scss" scoped>
+.benefit {
+  text-align: center;
+}
+</style>

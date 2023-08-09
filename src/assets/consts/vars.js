@@ -1,4 +1,14 @@
 export default {
+  // breakpoints
+  breakpoints: {
+    xs: 0,
+    sm: 576,
+    md: 768,
+    lg: 992,
+    xl: 1200,
+    xxl: 1400,
+  },
+
   // colors
 
   font_color: '#000000',
@@ -36,27 +46,27 @@ export default {
   line_height: '25.6px',
   transform: 'inherit',
 
-  font_family_mark: 'nissan_regular',
-  font_size_mark: '16px',
-  font_weight_mark: '400',
-  line_height_mark: '25.6px',
-  transform_mark: 'uppercase',
+  font_family__mark: 'nissan_regular',
+  font_size__mark: '16px',
+  font_weight__mark: '400',
+  line_height__mark: '25.6px',
+  transform__mark: 'uppercase',
 
-  font_family_h1: 'nissan_light',
-  font_size_h1: '48px',
-  font_weight_h1: '300',
-  line_height_h1: '64px',
-  transform_h1: 'uppercase',
+  font_family__h1: 'nissan_light',
+  font_size__h1: '48px',
+  font_weight__h1: '300',
+  line_height__h1: '64px',
+  transform__h1: 'uppercase',
 
-  font_family_h2: 'nissan_regular',
-  font_size_h2: '36px',
-  font_weight_h2: '300',
-  line_height_h2: '48px',
-  transform_h2: 'uppercase',
+  font_family__h2: 'nissan_regular',
+  font_size__h2: '36px',
+  font_weight__h2: '300',
+  line_height__h2: '48px',
+  transform__h2: 'uppercase',
 
-  font_family_h3: 'nissan_bold',
-  font_size_h3: '20px',
-  font_weight_h3: '300',
-  line_height_h3: '32px',
-  transform_h3: 'uppercase',
+  font_family__h3: 'nissan_bold',
+  font_size__h3: '20px',
+  font_weight__h3: '300',
+  line_height__h3: '32px',
+  transform__h3: 'uppercase',
 }

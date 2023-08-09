@@ -1,13 +1,13 @@
 @use '@styles/vars';
 @use 'sass:map';
 
-@mixin row($gap, $cols, $sm, $md, $lg, $xl, $xxl) {
+@mixin row($gap, $xs, $sm, $md, $lg, $xl, $xxl) {
   display: grid;
   grid-template-columns: repeat(vars.$cols, 1fr);
   gap: calc($gap * vars.$d);
 
   $breakpoint_cols: (
-    'true': $cols,
+    'xs': $xs,
     'sm': $sm,
     'md': $md,
     'lg': $lg,

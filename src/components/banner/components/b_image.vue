@@ -3,30 +3,46 @@ import { ui_wrapper, ui_background } from '@ui'
 </script>
 
 <template>
-  <div class="image">
+  <ui_wrapper
+    class="image"
+    container
+    fluid
+    end
+  >
     <ui_wrapper
-      container
+      horizontal
       fluid
       end
     >
-      <ui_wrapper
-        horizontal
-        fluid
-        end
-      >
-        <ui_background
-          background="car"
-          position="right bottom"
-          :size="`${(100 * 680) / 1200}%`"
-        />
-      </ui_wrapper>
+      <!-- shadow -->
+      <ui_background
+        class="image__background_wrapper"
+        background="shadow"
+        position="right bottom"
+        :size="`${(100 * 680) / 1200}%`"
+      />
+      <!-- /shadow -->
+
+      <!-- car -->
+      <ui_background
+        class="image__background_wrapper"
+        background="car"
+        position="right bottom"
+        :size="`${(100 * 680) / 1200}%`"
+      />
+      <!-- /car -->
     </ui_wrapper>
-  </div>
+  </ui_wrapper>
 </template>
 
 <style lang="scss" scoped>
+@use '@styles/utils';
+
 .image {
-  &__wrapper {
+  @include utils.z(0);
+
+  &__background_wrapper {
+    @include utils.absolute(0, '0');
   }
 }
 </style>

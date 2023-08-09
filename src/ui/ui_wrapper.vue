@@ -25,6 +25,11 @@ const props = defineProps({
     default: false,
   },
 
+  original: {
+    type: Boolean,
+    default: false,
+  },
+
   padding: {
     type: [Boolean, String],
     default: false,
@@ -45,6 +50,7 @@ const props = defineProps({
         '--center': center,
         '--end': end,
         '--horizontal': horizontal,
+        '--original': original,
         '--fluid': fluid,
         '--container': container,
         '--padding': padding,
@@ -63,7 +69,7 @@ const props = defineProps({
   &:not(.--horizontal) {
     @include utils.f(v-bind(gap), 'col');
 
-    & > :deep(*) {
+    &:not(.--original) > :deep(*) {
       width: 100%;
     }
   }

@@ -2,13 +2,18 @@
 !
 
 	ui slider
-	banner -> mobile
-	animation time
-	ui image -> rewrite
 	car image add shadow
+	animation time fast
+	banner -> mobile
+	firefox
+	safari
+	обрезать картинки
 
 ?
-
+	animation time
+	ui image -> rewrite
+	ui composables
+	ui assets
 	ui row -> slot scope
 	use props
 	add theme

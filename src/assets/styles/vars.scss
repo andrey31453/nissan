@@ -1,23 +1,21 @@
 // consts
 
 $breakpoints: (
-  'true': 0,
+  'xs': 0,
   'sm': 576,
   'md': 768,
   'lg': 992,
   'xl': 1200,
   'xxl': 1400,
-  'fluid': 99999,
 );
 
 $breakpoint_paddings: (
-  'true': 5,
+  'xs': 5,
   'sm': 10,
   'md': 20,
   'lg': 30,
   'xl': 50,
   'xxl': 60,
-  'fluid': 60,
 );
 
 // colors
@@ -56,29 +54,29 @@ $lh: var(--line_height);
 $tt: var(--transform);
 
 // mark
-$ff_mark: var(--font_family_mark);
-$fs_mark: var(--font_size_mark);
-$fw_mark: var(--font_weight_mark);
-$lh_mark: var(--line_height_mark);
-$tt_mark: var(--transform_mark);
+$ff__mark: var(--font_family__mark);
+$fs__mark: var(--font_size__mark);
+$fw__mark: var(--font_weight__mark);
+$lh__mark: var(--line_height__mark);
+$tt__mark: var(--transform__mark);
 
 // h1
-$ff_h1: var(--font_family_h1);
-$fs_h1: var(--font_size_h1);
-$fw_h1: var(--font_weight_h1);
-$lh_h1: var(--line_height_h1);
-$tt_h1: var(--transform_h1);
+$ff__h1: var(--font_family__h1);
+$fs__h1: var(--font_size__h1);
+$fw__h1: var(--font_weight__h1);
+$lh__h1: var(--line_height__h1);
+$tt__h1: var(--transform__h1);
 
 // h2
-$ff_h2: var(--font_family_h2);
-$fs_h2: var(--font_size_h2);
-$fw_h2: var(--font_weight_h2);
-$lh_h2: var(--line_height_h2);
-$tt_h2: var(--transform_h2);
+$ff__h2: var(--font_family__h2);
+$fs__h2: var(--font_size__h2);
+$fw__h2: var(--font_weight__h2);
+$lh__h2: var(--line_height__h2);
+$tt__h2: var(--transform__h2);
 
 // h3
-$ff_h3: var(--font_family_h3);
-$fs_h3: var(--font_size_h3);
-$fw_h3: var(--font_weight_h3);
-$lh_h3: var(--line_height_h3);
-$tt_h3: var(--transform_h3);
+$ff__h3: var(--font_family__h3);
+$fs__h3: var(--font_size__h3);
+$fw__h3: var(--font_weight__h3);
+$lh__h3: var(--line_height__h3);
+$tt__h3: var(--transform__h3);

@@ -28,6 +28,8 @@ use_id(features)
 const { has_locale_features, add_locale_feature } =
   use_locale_features(features)
 
+// components
+
 import { ui_wrapper, ui_h, ui_slider, ui_error, ui_row, ui_button } from '@ui'
 import feature from '../feature/feature'
 </script>
@@ -43,8 +45,8 @@ import feature from '../feature/feature'
     <ui_error :error="error">
       <ui_wrapper gap="6">
         <ui_row
-          cols="1"
-          md="2"
+          xs="1"
+          sm="2"
           lg="3"
           gap="3"
         >

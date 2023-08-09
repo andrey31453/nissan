@@ -1,9 +1,13 @@
 <script setup>
 import { ui_wrapper } from '@ui'
+import { vUseBreakpoint } from '@directives'
 </script>
 
 <template>
-  <div class="app_wrapper">
+  <div
+    v-use-breakpoint
+    class="app_wrapper"
+  >
     <ui_wrapper gap="2">
       <slot />
     </ui_wrapper>

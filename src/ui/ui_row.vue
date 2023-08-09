@@ -1,11 +1,11 @@
 <script setup>
-import { use_breadcrumbs } from '@composables'
+import { use_breakpoint_props } from './composables'
 import { vars } from '@consts'
 
 const props = defineProps({
-  cols: {
+  xs: {
     type: String,
-    default: vars.cols,
+    default: vars.xs,
   },
 
   sm: {
@@ -34,8 +34,7 @@ const props = defineProps({
   },
 })
 
-const { css_cols, css_sm, css_md, css_lg, css_xl, css_xxl } =
-  use_breadcrumbs(props)
+const { _xs, _sm, _md, _lg, _xl, _xxl } = use_breakpoint_props(props)
 </script>
 
 <template>
@@ -50,12 +49,12 @@ const { css_cols, css_sm, css_md, css_lg, css_xl, css_xxl } =
 .ui_row {
   @include utils.row(
     v-bind(gap),
-    v-bind(css_cols),
-    v-bind(css_sm),
-    v-bind(css_md),
-    v-bind(css_lg),
-    v-bind(css_xl),
-    v-bind(css_xxl)
+    v-bind(_xs),
+    v-bind(_sm),
+    v-bind(_md),
+    v-bind(_lg),
+    v-bind(_xl),
+    v-bind(_xxl)
   );
 }
 </style>

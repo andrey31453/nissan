@@ -26,9 +26,9 @@ import benefit from '../benefit/benefit'
     <!-- benefit list -->
     <ui_slider
       col="1"
-      md="2"
-      lg="3"
-      xl="4"
+      sm="2"
+      md="3"
+      xl="3"
       gap="4"
     >
       <template
