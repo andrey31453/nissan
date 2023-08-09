@@ -1,4 +1,4 @@
-import { ref, useSlots } from 'vue'
+import { ref, computed, useSlots } from 'vue'
 
 import { use_event_listener } from '@composables'
 
@@ -17,8 +17,11 @@ export default (breakpoints, app_store) => {
   use_event_listener('resize', set_visible_count)
   set_elem_count()
 
+  const has_slider = computed(() => visible_count.value < elem_count.value)
+
   return {
     visible_count,
     elem_count,
+    has_slider,
   }
 }

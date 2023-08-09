@@ -1,6 +1,13 @@
 <script setup>
+import { ref } from 'vue'
+
 import { vars } from '@consts'
-import { use_on_resize, use_on_breakpoint, use_counts } from './composables'
+import {
+  use_on_resize,
+  use_on_breakpoint,
+  use_counts,
+  use_slider,
+} from './composables'
 import { use_breakpoint_props } from '@composables'
 import { use_app_store } from '@store'
 
@@ -39,7 +46,10 @@ const props = defineProps({
 const breakpoints = use_breakpoint_props(props)
 const app_store = use_app_store()
 
-const { visible_count, elem_count } = use_counts(breakpoints, app_store)
+const { visible_count, elem_count, has_slider } = use_counts(
+  breakpoints,
+  app_store
+)
 
 const {
   slider,
@@ -51,10 +61,20 @@ const {
   on_resize,
 } = use_on_resize(visible_count)
 
-const { on_breakpoint, has_slider } = use_on_breakpoint(
+const {
+  active_slide,
+  left,
+
+  on_mouse_down,
+  on_mouse_move,
+  on_mouse_up,
+} = use_slider()
+
+const { on_breakpoint } = use_on_breakpoint({
+  active_slide,
   visible_count,
-  elem_count
-)
+  elem_count,
+})
 
 //
 
@@ -67,6 +87,12 @@ import { vBreakpoint, vResize } from '@directives'
     class="ui_slider"
     v-breakpoint:init="on_breakpoint"
     v-resize:init="on_resize"
+    @mousedown="on_mouse_down"
+    @mousemove="on_mouse_move"
+    @mouseup="on_mouse_up"
+    @touchstart="on_mouse_down"
+    @touchmove="on_mouse_move"
+    @touchend="on_mouse_up"
   >
     <template v-if="has_slider"> slider </template>
     <div
@@ -85,13 +111,14 @@ import { vBreakpoint, vResize } from '@directives'
   position: relative;
   height: v-bind(slider_height);
   overflow: hidden;
+  user-select: none;
 
   &__wrapper {
     @include utils.f(v-bind(gap), 'nw,as');
 
     position: absolute;
 
-    left: 0;
+    left: v-bind(left);
     top: 0;
 
     & > :deep(*) {
