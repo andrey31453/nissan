@@ -34,7 +34,7 @@ const set_init_drag = (current_left, current_screen_x) => {
   }
 }
 
-const on_mouse_down = (e) => {
+const on_drag_start = (e) => {
   if (is_drag.value) return void 0
 
   const current_left = drag.left
@@ -42,7 +42,7 @@ const on_mouse_down = (e) => {
   set_init_drag(current_left, current_screen_x)
 }
 
-const on_mouse_move = (e) => {
+const on_drag = (e) => {
   if (!is_drag.value) return void 0
 
   const screenX = get_screen_x(e)
@@ -50,7 +50,7 @@ const on_mouse_move = (e) => {
   set_left()
 }
 
-const on_mouse_up = () => {
+const on_drag_end = () => {
   is_drag.value = false
 }
 
@@ -59,8 +59,8 @@ export default () => {
     left,
     is_drag,
 
-    on_mouse_down,
-    on_mouse_move,
-    on_mouse_up,
+    on_drag_start,
+    on_drag,
+    on_drag_end,
   }
 }

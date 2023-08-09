@@ -65,9 +65,9 @@ const {
   left,
   is_drag,
 
-  on_mouse_down,
-  on_mouse_move,
-  on_mouse_up,
+  on_drag_start,
+  on_drag,
+  on_drag_end,
 } = use_mouse_drag()
 
 const { on_breakpoint } = use_on_breakpoint({
@@ -91,13 +91,13 @@ import { vBreakpoint, vResize } from '@directives'
     ]"
     v-breakpoint:init="on_breakpoint"
     v-resize:init="on_resize"
-    @mousedown="on_mouse_down"
-    @mousemove="on_mouse_move"
-    @mouseup="on_mouse_up"
-    @touchstart="on_mouse_down"
-    @touchmove="on_mouse_move"
-    @touchend="on_mouse_up"
-    @mouseleave="on_mouse_up"
+    @mousedown="on_drag_start"
+    @mousemove="on_drag"
+    @mouseup="on_drag_end"
+    @touchstart="on_drag_start"
+    @touchmove="on_drag"
+    @touchend="on_drag_end"
+    @mouseleave="on_drag_end"
   >
     <template v-if="has_slider"> slider </template>
     <div
