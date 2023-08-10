@@ -1,4 +1,4 @@
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 
 import { use_event_listener } from '@composables'
 import { vars } from '@consts'
@@ -6,6 +6,7 @@ import { vars } from '@consts'
 const left = ref(null)
 const left_cash = ref(0)
 const is_drag = ref(false)
+const not_on_drag_start = ref(false)
 
 const left_limits = ref(null)
 
@@ -56,6 +57,7 @@ const set_init_drag = (current_left, current_screen_x) => {
 }
 
 const on_drag_start = (e) => {
+  if (not_on_drag_start.value) return void 0
   if (is_drag.value) return void 0
 
   const current_left = left_cash.value
@@ -76,7 +78,22 @@ const on_drag_end = () => {
   is_drag.value = false
 }
 
-export default ({ elem_count, visible_count, elem_width_value }) => {
+const block_slider = (v) => {
+  if (!v) {
+    left_cash.value = 0
+    set_left()
+    not_on_drag_start.value = true
+  } else {
+    not_on_drag_start.value = false
+  }
+}
+
+export default ({
+  elem_count,
+  visible_count,
+  elem_width_value,
+  has_slider,
+}) => {
   const set_left_limits = () => {
     const elem_cont_width =
       elem_width_value.value + 4 * +vars.distance.replace(/\D/g, ' ')
@@ -87,6 +104,7 @@ export default ({ elem_count, visible_count, elem_width_value }) => {
     }
   }
 
+  watch(has_slider, block_slider, { immediate: true })
   onMounted(set_left_limits)
   use_event_listener('resize', set_left_limits, false)
 

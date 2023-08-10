@@ -78,6 +78,7 @@ const {
   elem_count,
   visible_count,
   elem_width_value,
+  has_slider,
 })
 
 const {
@@ -113,6 +114,7 @@ import { vBreakpoint, vResize } from '@directives'
         'slids',
         {
           '--draggable': is_drag,
+          '--has_slider': has_slider,
         },
       ]"
       v-breakpoint:init="on_breakpoint"
@@ -174,9 +176,11 @@ import { vBreakpoint, vResize } from '@directives'
   user-select: none;
 
   // cursor
-  cursor: grab;
-  &.--draggable {
-    cursor: grabbing;
+  &.--has_slider {
+    cursor: grab;
+    &.--draggable {
+      cursor: grabbing;
+    }
   }
 
   // wrapper
