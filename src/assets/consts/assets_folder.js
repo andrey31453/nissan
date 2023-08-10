@@ -1,1 +1,1 @@
-export default './assets'
+export default 'assets'
