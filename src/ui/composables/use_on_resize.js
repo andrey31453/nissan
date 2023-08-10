@@ -5,12 +5,18 @@ const slids = ref(null)
 const wrapper = ref(null)
 
 const elem_width = ref(null)
+const elem_width_value = ref(null)
 const slider_height = ref(null)
 
 const get_elem_width = (count) => {
-  return `calc(${slids.value.offsetWidth / count.value}px - ${
-    count.value - 1
-  } * ${vars.distance})`
+  elem_width_value.value =
+    (slids.value.offsetWidth -
+      (count.value - 1) * 4 * +vars.distance.replace(/\D/g, ' ')) /
+    +count.value
+
+  return `calc((${slids.value.offsetWidth}px - ${count.value - 1} * 4 * ${
+    vars.distance
+  })/ ${count.value})`
 }
 
 const get_slider_height = () => {
@@ -34,6 +40,7 @@ export default (count) => {
     wrapper,
 
     elem_width,
+    elem_width_value,
     slider_height,
 
     on_resize,

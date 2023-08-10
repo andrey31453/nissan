@@ -24,5 +24,9 @@ export default ({ limits, visible_count }) => {
   const is_visible = get_is_visible(visible_count)
   const on_cntrl_elem = get_on_cntrl_elem(limits)
 
-  return { active_elem, is_visible, on_cntrl_elem }
+  return {
+    active_elem,
+    is_visible,
+    on_cntrl_elem,
+  }
 }

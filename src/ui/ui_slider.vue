@@ -9,6 +9,7 @@ import {
   use_breakpoint,
   use_mouse_control_relation,
 } from './composables'
+
 import { use_breakpoint_props } from '@composables'
 
 const props = defineProps({
@@ -45,14 +46,20 @@ const props = defineProps({
 
 const breakpoints = use_breakpoint_props(props)
 
-const { limits, visible_count, has_slider, on_breakpoint } =
-  use_breakpoint(breakpoints)
+const {
+  limits,
+  visible_count,
+  has_slider,
+
+  on_breakpoint,
+} = use_breakpoint(breakpoints)
 
 const {
   slids,
   wrapper,
 
   elem_width,
+  elem_width_value,
   slider_height,
 
   on_resize,
@@ -60,6 +67,7 @@ const {
 
 const {
   left,
+  left_cash,
   is_drag,
 
   on_drag_start,
@@ -67,13 +75,22 @@ const {
   on_drag_end,
 } = use_mouse_drag()
 
-const { is_visible, on_cntrl_elem } = use_on_control({
+const {
   active_elem,
+  is_visible,
+
+  on_cntrl_elem,
+} = use_on_control({
   limits,
   visible_count,
 })
 
-use_mouse_control_relation({ left, active_elem, limits, elem_width })
+use_mouse_control_relation({
+  left,
+  left_cash,
+  elem_width_value,
+  active_elem,
+})
 
 // template
 

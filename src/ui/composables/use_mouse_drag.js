@@ -1,22 +1,22 @@
 import { ref } from 'vue'
 
 const left = ref(null)
+const left_cash = ref(0)
 const is_drag = ref(false)
 
 let drag = {
-  left: 0,
   start_left: 0,
   screen_x: 0,
   start_screen_x: 0,
 }
 
 const set_left = () => {
-  left.value = `${drag.left}px`
+  left.value = `${left_cash.value}px`
 }
 set_left()
 
 const set_drag_left = (screenX) => {
-  drag.left = drag.start_left + screenX - drag.start_screen_x
+  left_cash.value = drag.start_left + screenX - drag.start_screen_x
 }
 
 const get_screen_x = (e) => {
@@ -37,8 +37,9 @@ const set_init_drag = (current_left, current_screen_x) => {
 const on_drag_start = (e) => {
   if (is_drag.value) return void 0
 
-  const current_left = drag.left
+  const current_left = left_cash.value
   const current_screen_x = get_screen_x(e)
+
   set_init_drag(current_left, current_screen_x)
 }
 
@@ -57,6 +58,7 @@ const on_drag_end = () => {
 export default () => {
   return {
     left,
+    left_cash,
     is_drag,
 
     on_drag_start,
