@@ -7,6 +7,7 @@ import {
   use_on_control,
   use_mouse_drag,
   use_breakpoint,
+  use_mouse_control_relation,
 } from './composables'
 import { use_breakpoint_props } from '@composables'
 
@@ -67,9 +68,12 @@ const {
 } = use_mouse_drag()
 
 const { is_visible, on_cntrl_elem } = use_on_control({
+  active_elem,
   limits,
   visible_count,
 })
+
+use_mouse_control_relation({ left, active_elem, limits, elem_width })
 
 // template
 

@@ -22,9 +22,16 @@ export default (breakpoints) => {
     visible_count.value = breakpoints[breakpoint]
   }
   const set_limits = () => {
-    limits.value = {
-      start: -1,
-      end: elem_count.value - visible_count.value + 1,
+    if (visible_count.value == 1) {
+      limits.value = {
+        start: 0,
+        end: visible_count.value,
+      }
+    } else {
+      limits.value = {
+        start: -1,
+        end: elem_count.value - visible_count.value + 1,
+      }
     }
   }
   const on_breakpoint = get_on_breakpoint({ set_visible_count, set_limits })
