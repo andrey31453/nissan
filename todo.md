@@ -1,7 +1,6 @@
 **!**
 
 - ui slide -> left limits
-- ui slide -> relation
 
 **?**
 

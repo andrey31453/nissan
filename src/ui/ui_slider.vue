@@ -88,6 +88,7 @@ const {
 use_mouse_control_relation({
   left,
   left_cash,
+  is_drag,
   elem_width_value,
   active_elem,
 })
