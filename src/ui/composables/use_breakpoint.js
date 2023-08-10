@@ -36,5 +36,6 @@ export default (breakpoints) => {
     limits,
     has_slider,
     visible_count,
+    elem_count,
   }
 }

@@ -50,6 +50,7 @@ const {
   limits,
   visible_count,
   has_slider,
+  elem_count,
 
   on_breakpoint,
 } = use_breakpoint(breakpoints)
@@ -73,7 +74,11 @@ const {
   on_drag_start,
   on_drag,
   on_drag_end,
-} = use_mouse_drag()
+} = use_mouse_drag({
+  elem_count,
+  visible_count,
+  elem_width_value,
+})
 
 const {
   active_elem,

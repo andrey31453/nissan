@@ -1,9 +1,4 @@
-**!**
-
-- ui slide -> left limits
-
-**?**
-
+- vars.get
 - add animation time scrypt
 - add models
 - add themes
