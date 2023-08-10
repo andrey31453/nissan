@@ -1,5 +1,4 @@
 <script setup>
-import { get_locale_image } from '@helpers'
 import { keys } from '@consts'
 
 const props = defineProps({
