@@ -135,7 +135,7 @@ import { vBreakpoint, vResize } from '@directives'
 @use '@styles/vars';
 
 .ui_slider {
-  @include utils.f(1, 'col');
+  @include utils.f(4, 'col');
 }
 
 // slids
