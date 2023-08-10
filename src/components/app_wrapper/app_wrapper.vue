@@ -1,7 +1,10 @@
 <script setup>
+import { use_title } from '@composables'
 import { use_app_store } from '@store'
 
 const app_store = use_app_store()
+
+use_title()
 
 //
 

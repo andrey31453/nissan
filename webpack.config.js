@@ -67,7 +67,7 @@ const get_rules = (dev) => {
 
     // files
     {
-      test: /\.(png|jpg|webp|.json)$/i,
+      test: /\.(png|jpg|webp|ico|.json)$/i,
       type: 'asset/resource',
     },
 

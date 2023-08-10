@@ -1,7 +1,6 @@
 **!**
 
-- ui slider - > buttons
-- ui slider - > limits
+- ui relation
 - favicon
 
 **?**
