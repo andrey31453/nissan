@@ -1,5 +1,6 @@
 import { onMounted, ref } from 'vue'
 
+import { use_event_listener } from '@composables'
 import { vars } from '@consts'
 
 const left = ref(null)
@@ -19,12 +20,24 @@ const set_left = () => {
 }
 set_left()
 
-const set_drag_left = (screenX) => {
-  const new_left = drag.start_left + screenX - drag.start_screen_x
+const is_limit_left = (new_left) => {
+  if (new_left > left_limits.value.start && new_left > left_cash.value)
+    return true
+  if (new_left < left_limits.value.end && new_left < left_cash.value)
+    return true
 
-  if (left_limits.value.start > new_left && new_left > left_limits.value.end) {
-    left_cash.value = drag.start_left + screenX - drag.start_screen_x
-  }
+  return false
+}
+
+const get_new_left = (screenX) => {
+  return drag.start_left + screenX - drag.start_screen_x
+}
+
+const set_drag_left = (screenX) => {
+  const new_left = get_new_left(screenX)
+  if (is_limit_left(new_left)) return void 0
+
+  left_cash.value = drag.start_left + screenX - drag.start_screen_x
 }
 
 const get_screen_x = (e) => {
@@ -66,14 +79,16 @@ const on_drag_end = () => {
 export default ({ elem_count, visible_count, elem_width_value }) => {
   const set_left_limits = () => {
     const elem_cont_width =
-      elem_width_value.value + +vars.distance.replace(/\D/g, ' ')
+      elem_width_value.value + 4 * +vars.distance.replace(/\D/g, ' ')
 
     left_limits.value = {
       start: elem_cont_width * (visible_count.value - 1),
       end: -elem_cont_width * (elem_count.value - 1),
     }
   }
+
   onMounted(set_left_limits)
+  use_event_listener('resize', set_left_limits, false)
 
   return {
     left,
