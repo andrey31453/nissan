@@ -5,11 +5,10 @@ import { vars } from '@consts'
 import {
   use_on_resize,
   use_on_control,
-  use_counts,
   use_mouse_drag,
+  use_breakpoint,
 } from './composables'
 import { use_breakpoint_props } from '@composables'
-import { use_app_store } from '@store'
 
 const props = defineProps({
   xs: {
@@ -44,12 +43,9 @@ const props = defineProps({
 })
 
 const breakpoints = use_breakpoint_props(props)
-const app_store = use_app_store()
 
-const { visible_count, elem_count, has_slider } = use_counts(
-  breakpoints,
-  app_store
-)
+const { limits, visible_count, has_slider, on_breakpoint } =
+  use_breakpoint(breakpoints)
 
 const {
   slids,
@@ -71,11 +67,12 @@ const {
 } = use_mouse_drag()
 
 const { is_visible, on_cntrl_elem } = use_on_control({
+  limits,
   visible_count,
   elem_count,
 })
 
-//
+// template
 
 import { vBreakpoint, vResize } from '@directives'
 </script>
@@ -92,6 +89,7 @@ import { vBreakpoint, vResize } from '@directives'
           '--draggable': is_drag,
         },
       ]"
+      v-breakpoint:init="on_breakpoint"
       v-resize:init="on_resize"
       @mousedown="on_drag_start"
       @mousemove="on_drag"
@@ -184,7 +182,7 @@ import { vBreakpoint, vResize } from '@directives'
     cursor: pointer;
 
     &.--visible {
-      @include utils.before(2);
+      @include utils.before(1);
 
       &::before {
         background-color: vars.$dc;

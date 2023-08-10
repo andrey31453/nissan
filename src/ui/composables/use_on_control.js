@@ -1,4 +1,5 @@
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
+import { storeToRefs } from 'pinia'
 
 const active_elem = ref(0)
 
@@ -9,13 +10,21 @@ const get_is_visible = (visible_count) => (elem_index) => {
   return true
 }
 
-const get_on_cntrl_elem = (visible_count) => (elem_index) => {
-  active_elem.value = elem_index
+const get_limit_elem_index = (limits, elem_index) => {
+  if (elem_index < limits.value.start) return limits.value.start
+  if (elem_index > limits.value.end) return limits.value.end
+
+  return elem_index
 }
 
-export default ({ visible_count, elem_count }) => {
+const get_on_cntrl_elem = (limits) => (elem_index) => {
+  const limit_elem_index = get_limit_elem_index(limits, elem_index)
+  active_elem.value = limit_elem_index
+}
+
+export default ({ limits, visible_count, elem_count }) => {
   const is_visible = get_is_visible(visible_count)
-  const on_cntrl_elem = get_on_cntrl_elem(visible_count)
+  const on_cntrl_elem = get_on_cntrl_elem(limits)
 
   return {
     is_visible,
