@@ -2,7 +2,7 @@
 
 npm i
 
-npm run dev / npm run build
+npm run dev 
 
 ## Комментарии к работе
 
