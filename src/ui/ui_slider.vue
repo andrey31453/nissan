@@ -69,7 +69,6 @@ const {
 const { is_visible, on_cntrl_elem } = use_on_control({
   limits,
   visible_count,
-  elem_count,
 })
 
 // template

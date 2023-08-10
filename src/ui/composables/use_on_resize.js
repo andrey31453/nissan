@@ -14,7 +14,7 @@ const get_elem_width = (count) => {
 }
 
 const get_slider_height = () => {
-  result = [...wrapper.value.children].reduce(
+  const result = [...wrapper.value.children].reduce(
     (acc, slide_node) => Math.max(acc, slide_node.offsetHeight),
     0
   )

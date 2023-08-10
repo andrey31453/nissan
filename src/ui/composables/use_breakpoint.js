@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue'
+import { ref, computed, useSlots } from 'vue'
 
 const visible_count = ref(null)
 const elem_count = ref(null)
@@ -11,7 +11,7 @@ const get_on_breakpoint =
     set_limits()
   }
 
-export default ({ breakpoints }) => {
+export default (breakpoints) => {
   const set_elem_count = () => {
     const slot = useSlots().default()
     elem_count.value = slot[0].children.length
@@ -21,7 +21,7 @@ export default ({ breakpoints }) => {
   const set_visible_count = (breakpoint) => {
     visible_count.value = breakpoints[breakpoint]
   }
-  const set_limits = ({ visible_count, elem_count }) => {
+  const set_limits = () => {
     limits.value = {
       start: 0,
       end: elem_count.value - visible_count.value,
