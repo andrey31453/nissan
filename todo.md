@@ -1,4 +1,5 @@
 - vars.get
+- debounce resize
 - add animation time scrypt
 - add models
 - add themes
