@@ -1,8 +1,8 @@
 import { onMounted } from 'vue'
 
-export default (target, vars) => {
+export default (vars) => {
   const set_var = (vars_key) => {
-    target.value.style.setProperty(`--${vars_key}`, vars[vars_key])
+    document.body.style.setProperty(`--${vars_key}`, vars[vars_key])
   }
 
   const set_vars = () => {

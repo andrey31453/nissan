@@ -1,6 +1,3 @@
-export { default as use_background } from './composables/use_background'
-export { default as use_color } from './composables/use_color'
-export { default as use_ui_h_render } from './composables/use_ui_h_render'
 export { default as use_on_resize } from './composables/use_on_resize'
 export { default as use_on_control } from './composables/use_on_control'
 export { default as use_mouse_drag } from './composables/use_mouse_drag'

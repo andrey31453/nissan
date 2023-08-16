@@ -1,6 +1,6 @@
 <script setup>
 import { vars } from '@consts'
-import { use_color, use_background } from './composables'
+import { use_color_style, use_background_style } from './composables'
 import { use_car_store } from '@store'
 
 const props = defineProps({
@@ -30,10 +30,10 @@ const props = defineProps({
   },
 })
 
-const color_style = use_color(props.color)
+const color_style = use_color_style(props.color)
 
 const car_store = use_car_store()
-const background_style = use_background(
+const background_style = use_background_style(
   props.background,
   car_store.current_model
 )

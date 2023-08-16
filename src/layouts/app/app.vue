@@ -1,10 +1,12 @@
 <script setup>
-import { use_title } from '@composables'
+import { use_title, use_vars } from '@composables'
 import { use_app_store } from '@store'
+import { vars } from '@consts'
 
 const app_store = use_app_store()
 
 use_title()
+use_vars(vars)
 
 //
 

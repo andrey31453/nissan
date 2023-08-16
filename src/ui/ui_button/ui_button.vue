@@ -8,7 +8,7 @@ const props = defineProps({
   },
 })
 
-import ui_icon from './ui_icon'
+import ui_icon from '../ui_icon/ui_icon'
 </script>
 
 <template>

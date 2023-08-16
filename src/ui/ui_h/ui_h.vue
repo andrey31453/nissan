@@ -1,5 +1,5 @@
 <script setup>
-import { use_ui_h_render } from './composables'
+import { use_render } from './composables'
 
 const props = defineProps({
   h1: {
@@ -23,7 +23,7 @@ const props = defineProps({
   },
 })
 
-const render = use_ui_h_render(props)
+const render = use_render(props)
 </script>
 
 <template>
