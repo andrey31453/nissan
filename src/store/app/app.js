@@ -3,6 +3,7 @@ export default {
   state: () => {
     return {
       breakpoint: null,
+      window_width: null,
     }
   },
 }

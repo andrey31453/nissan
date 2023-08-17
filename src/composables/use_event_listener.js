@@ -1,4 +1,4 @@
-import { onBeforeUnmount, onMounted } from 'vue'
+import { onMounted, onBeforeUnmount } from 'vue'
 
 export default (listener, cb, init = true) => {
   const add_listener = () => {

@@ -1,24 +1,28 @@
 <script setup>
-import { use_title, use_vars } from '@composables'
-import { use_app_store } from '@store'
-import { vars } from '@consts'
+import { storeToRefs } from 'pinia'
 
-const app_store = use_app_store()
+import { use_title, use_vars, use_resize } from '@composables'
+import { vars } from '@consts'
+import { use_app_store } from '@store'
 
 use_title()
 use_vars(vars)
+use_resize()
 
-//
+const app_store = use_app_store()
+const { window_width, breakpoint } = storeToRefs(app_store)
+
+// template
 
 import { ui_wrapper } from '@ui'
-import { vUseBreakpoint } from '@directives'
 </script>
 
 <template>
   <ui_wrapper
-    v-use-breakpoint
     class="app_wrapper"
     gap="2"
+    :data-window_width="window_width"
+    :data-breakpoint="breakpoint"
   >
     <template v-if="app_store.breakpoint">
       <slot />
